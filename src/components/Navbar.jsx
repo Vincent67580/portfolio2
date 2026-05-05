@@ -5,26 +5,25 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <div className="logo">
-          <NavHashLink to="/"><strong>BONNET Vincent</strong></NavHashLink>
+          {/* Remonte en haut de la page actuelle ou va à l'accueil */}
+          <NavHashLink smooth to="/#top"><strong>BONNET Vincent</strong></NavHashLink>
         </div>
         <ul>
-          {/* Remonte tout en haut de la Home */}
           <li>
             <NavHashLink smooth to="/#top">Accueil</NavHashLink>
           </li>
           <li><NavHashLink to="/about">À propos</NavHashLink></li>
-          
-          {/* Descend à la section Compétences sur la Home */}
-          <li>
-            <NavHashLink  to="/skills">Compétences</NavHashLink>
-          </li>
-          
+          <li><NavHashLink to="/skills">Compétences</NavHashLink></li>
           <li><NavHashLink to="/projets">Projets</NavHashLink></li>
           <li><NavHashLink to="/experiences">Expériences</NavHashLink></li>
-          <li><NavHashLink smooth to="/#contact">Contact</NavHashLink></li>
+          <li>
+            {/* Si la section contact est sur la page d'accueil */}
+            <NavHashLink smooth to="/#contact">Contact</NavHashLink>
+          </li>
         </ul>
       </div>
     </nav>
   );
 }
-export default Navbar
+
+export default Navbar;
