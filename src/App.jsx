@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 import './App.css';
 
 // Import des composants de la page d'accueil
