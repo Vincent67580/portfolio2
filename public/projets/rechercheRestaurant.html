@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche restaurant</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <style>
+        :root {
+            --primary: #2e7dff;
+            --primary-dark: #0053d6;
+            --bg: #f8f9fa;
+            --text: #2c3e50;
+            --card-bg: #ffffff;
+            --error: #e74c3c;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 { 
+            text-align: center; 
+            color: var(--text); 
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Formulaire */
+        #form-box {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        label { 
+            font-weight: 600; 
+            display: block; 
+            margin-bottom: 5px; 
+            font-size: 0.9em; 
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.2s;
+            background-color: white;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 255, 0.1);
+        }
+
+        #cuisine-manual-container {
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Checkbox Custom */
+        .checkbox-wrapper {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            accent-color: var(--primary);
+        }
+
+        /* Bouton */
+        button {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            grid-column: 1 / -1;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        button:hover { background: var(--primary-dark); }
+        button:active { transform: scale(0.98); }
+
+        button.secondary {
+            background: #fff;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            margin-top: 15px;
+            width: auto;
+            display: inline-block;
+        }
+        
+        button.secondary:hover { background: #f0f7ff; }
+
+        /* Carte */
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        /* Résultats */
+        #results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .restaurant-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-title { font-size: 1.1em; font-weight: bold; margin-bottom: 5px; color: #2c3e50; }
+        .card-tag { 
+            display: inline-block; 
+            background: #eef4ff; 
+            color: var(--primary); 
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            font-size: 0.8em; 
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .card-address { font-size: 0.9em; color: #666; margin-bottom: 10px; flex-grow: 1; }
+        .card-dist { font-size: 0.85em; color: #888; text-align: right; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
+
+        /* États et Erreurs */
+        #loading, #progress { 
+            text-align: center; 
+            padding: 20px; 
+            display: none; 
+            font-weight: bold; 
+            color: var(--primary); 
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(46,125,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .error-message { color: var(--error); font-size: 0.85em; margin-top: 4px; min-height: 1.2em; }
+        
+        #global-msg {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+        .msg-error { background: #fdeded; color: var(--error); border: 1px solid #f5c6cb; }
+        .msg-info { background: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🍽️ Recherche de Restaurants</h1>
+
+    <div id="global-msg"></div>
+
+    <div id="form-box">
+        <div class="form-grid">
+            <div>
+                <label for="ville">📍 Ville ou adresse</label>
+                <input type="text" id="ville" placeholder="Ex : Strasbourg, Place Kléber...">
+                <div id="ville-error" class="error-message"></div>
+            </div>
+            
+            <div>
+                <label for="cuisine-select">🍕 Type de Cuisine</label>
+                <select id="cuisine-select" onchange="toggleCuisineManual()">
+                    <option value="">Tous les types</option>
+                    <option value="italian">Italien</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="french">Français</option>
+                    <option value="burger">Burger / Fast Food</option>
+                    <option value="japanese">Japonais / Sushi</option>
+                    <option value="chinese">Chinois</option>
+                    <option value="indian">Indien</option>
+                    <option value="thai">Thaïlandais</option>
+                    <option value="mexican">Mexicain</option>
+                    <option value="kebab">Kebab</option>
+                    <option value="vegetarian">Végétarien</option>
+                    <option value="custom">Autre (saisir manuellement)...</option>
+                </select>
+                <div id="cuisine-manual-container">
+                    <input type="text" id="cuisine-manual" placeholder="Saisissez un type (ex: Libanais, Grec...)">
+                </div>
+            </div>
+
+            <div>
+                <label for="rayon">📏 Rayon de recherche (km)</label>
+                <input type="number" id="rayon" value="2" min="1" max="20">
+                <div id="rayon-error" class="error-message"></div>
+            </div>
+            
+            <div>
+                <label for="nb">🔢 Nombre max de résultats</label>
+                <input type="number" id="nb" value="20" min="1" max="200">
+                <div id="nb-error" class="error-message"></div>
+            </div>
+
+            <label class="checkbox-wrapper">
+                <input type="checkbox" id="chk-photon">
+                <div>
+                    <strong>Enrichir les données</strong>
+                    <div style="font-size:0.8em; color:#666; font-weight:normal;">Utilise Photon pour trouver les adresses manquantes (plus lent).</div>
+                </div>
+            </label>
+
+            <button onclick="searchRestaurants()">🔍 Lancer la recherche</button>
+        </div>
+    </div>
+
+    <div id="loading"><div class="spinner"></div>Recherche sur les serveurs OpenStreetMap...</div>
+    <div id="progress"></div>
+    <div id="server-status" style="text-align:center; color:#7f8c8d; font-size: 0.85em; margin-bottom: 10px;"></div>
+
+    <div id="map"></div>
+    <div id="actions-area" style="text-align: center;"></div>
+    <div id="results-container"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+// --- CONFIGURATION & VALIDATION ---
+const rayonInput = document.getElementById("rayon");
+const rayonError = document.getElementById("rayon-error");
+const nbInput = document.getElementById("nb");
+const nbError = document.getElementById("nb-error");
+const chkPhoton = document.getElementById("chk-photon");
+const globalMsg = document.getElementById("global-msg");
+
+function toggleCuisineManual() {
+    const select = document.getElementById("cuisine-select");
+    const manualContainer = document.getElementById("cuisine-manual-container");
+    manualContainer.style.display = (select.value === "custom") ? "block" : "none";
+}
+
+function showMsg(msg, type = 'error') {
+    globalMsg.style.display = 'block';
+    globalMsg.className = type === 'error' ? 'msg-error' : 'msg-info';
+    globalMsg.innerText = msg;
+}
+
+function hideMsg() {
+    globalMsg.style.display = 'none';
+}
+
+rayonInput.addEventListener("input", () => {
+    let val = Number(rayonInput.value);
+    if (val > 20) { rayonInput.value = 20; rayonError.innerText = "Max 20 km."; }
+    else if (val < 1) { rayonInput.value = 1; rayonError.innerText = "Min 1 km."; }
+    else { rayonError.innerText = ""; }
+});
+
+function validateNb() {
+    let nb = Number(nbInput.value);
+    let maxVal = chkPhoton.checked ? 50 : 200;
+
+    if (isNaN(nb)) {
+        nbInput.value = 1;
+        nbError.innerText = "Valeur invalide.";
+        return;
+    }
+
+    if (nb > maxVal) {
+        nbInput.value = maxVal;
+        nbError.innerText = chkPhoton.checked
+            ? "Max 50 avec l'enrichissement activé."
+            : "Max 200 sans enrichissement.";
+    } else if (nb < 1) {
+        nbInput.value = 1;
+        nbError.innerText = "Min 1.";
+    } else {
+        nbError.innerText = "";
+    }
+}
+
+nbInput.addEventListener("input", validateNb);
+chkPhoton.addEventListener("change", validateNb);
+
+// --- INITIALISATION CARTE ---
+let map = L.map('map').setView([46.603354, 1.888334], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+let markersLayer = L.layerGroup().addTo(map);
+let searchCircle = null;
+
+const OVERPASS_SERVERS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://lz4.overpass-api.de/api/interpreter",
+    "https://overpass.openstreetmap.fr/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter"
+];
+
+// --- LOGIQUE TECHNIQUE ---
+
+async function getCoordinates(ville) {
+    try {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(ville)}&limit=1`;
+        const response = await fetch(url, { headers: { "User-Agent": "RestoSearchApp_Canvas_Demo" }});
+        const data = await response.json();
+        return data.length ? { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) } : null;
+    } catch { return null; }
+}
+
+async function reversePhoton(lat, lon) {
+    const url = `https://photon.komoot.io/reverse?lat=${lat}&lon=${lon}&lang=fr`;
+    try {
+        const response = await fetch(url);
+        const json = await response.json();
+        if (!json.features?.length) return null;
+        const p = json.features[0].properties;
+        return {
+            adresse: [p.housenumber, p.street, p.postcode, p.city || p.town || p.village].filter(x => x).join(", ")
+        };
+    } catch { return null; }
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371e3;
+    const toRad = d => d * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+async function fetchOverpass(query) {
+    const statusDiv = document.getElementById("server-status");
+    for (const server of OVERPASS_SERVERS) {
+        statusDiv.innerText = `Connexion au serveur : ${new URL(server).hostname}...`;
+        try {
+            const resp = await fetch(server, {
+                method: "POST",
+                body: new URLSearchParams({ data: query })
+            });
+            if (resp.ok) return await resp.json();
+        } catch(e) { console.warn("Serveur Overpass indisponible", server); }
+    }
+    throw new Error("Aucun serveur Overpass n'a répondu.");
+}
+
+function exportCSV(restaurants) {
+    let csv = "\uFEFFnom;cuisine;adresse;distance_km;latitude;longitude\n";
+    restaurants.forEach(r => {
+        const nom = (r.nom || "").replace(/"/g, '""');
+        const cuisine = (r.cuisine || "").replace(/"/g, '""');
+        const adr = (r.adresse || "").replace(/"/g, '""');
+        csv += `"${nom}";"${cuisine}";"${adr}";${(r.dist/1000).toFixed(2).replace('.', ',')};${r.lat};${r.lon}\n`;
+    });
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `restaurants_export_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+}
+
+// --- RECHERCHE PRINCIPALE ---
+
+async function searchRestaurants() {
+    hideMsg();
+    const villeInput = document.getElementById("ville");
+    const ville = villeInput.value.trim();
+    
+    // Récupération de la cuisine (Select ou Manuel)
+    const select = document.getElementById("cuisine-select");
+    let cuisineVal = (select.value === "custom") 
+        ? document.getElementById("cuisine-manual").value.trim() 
+        : select.value;
+
+    const rayonVal = Number(rayonInput.value);
+    const rayon = rayonVal * 1000;
+    const nbMax = Number(nbInput.value);
+    const usePhoton = chkPhoton.checked;
+
+    if (!ville) {
+        showMsg("Veuillez saisir une ville ou une adresse.");
+        villeInput.focus();
+        return;
+    }
+
+    const resultsDiv = document.getElementById("results-container");
+    const actionsArea = document.getElementById("actions-area");
+    const loading = document.getElementById("loading");
+    const progress = document.getElementById("progress");
+    const statusDiv = document.getElementById("server-status");
+
+    resultsDiv.innerHTML = "";
+    actionsArea.innerHTML = "";
+    loading.style.display = "block";
+    statusDiv.innerText = "";
+    markersLayer.clearLayers();
+    if (searchCircle) map.removeLayer(searchCircle);
+
+    const coords = await getCoordinates(ville);
+    if (!coords) {
+        loading.style.display = "none";
+        showMsg("Localisation introuvable.");
+        return;
+    }
+
+    map.setView([coords.lat, coords.lon], 13);
+    searchCircle = L.circle([coords.lat, coords.lon], {
+        color: '#2e7dff',
+        fillColor: '#2e7dff',
+        fillOpacity: 0.1,
+        radius: rayon
+    }).addTo(map);
+    map.fitBounds(searchCircle.getBounds());
+
+    // Filtre Overpass
+    const safeCuisine = cuisineVal.replace(/"/g, '\\"');
+    const cuisineFilter = safeCuisine ? `["cuisine"~"${safeCuisine}", i]` : "";
+
+    const query = `[out:json][timeout:25];
+        (
+          node["amenity"="restaurant"]${cuisineFilter}(around:${rayon},${coords.lat},${coords.lon});
+          way["amenity"="restaurant"]${cuisineFilter}(around:${rayon},${coords.lat},${coords.lon});
+        );
+        out center;`;
+
+    let json;
+    try {
+        json = await fetchOverpass(query);
+    } catch (e) {
+        loading.style.display = "none";
+        statusDiv.innerText = "";
+        showMsg("Erreur de connexion aux serveurs OSM.");
+        return;
+    }
+
+    loading.style.display = "none";
+
+    let rawElements = json.elements || [];
+    let restaurants = rawElements.map(el => {
+        const lat = el.lat || el.center.lat;
+        const lon = el.lon || el.center.lon;
+        const rawName = el.tags?.name || el.tags?.brand || el.tags?.operator;
+        
+        let addrOSM = null;
+        if (el.tags?.["addr:street"]) {
+            addrOSM = `${el.tags["addr:housenumber"] || ""} ${el.tags["addr:street"]}, ${el.tags["addr:city"] || ""}`;
+        }
+
+        return {
+            id: el.id,
+            nom: rawName ? rawName : "Nom non précisé",
+            hasNoName: !rawName,
+            cuisine: el.tags?.cuisine ? (el.tags.cuisine.charAt(0).toUpperCase() + el.tags.cuisine.slice(1)) : "Non spécifié",
+            adresse: addrOSM,
+            lat: lat,
+            lon: lon,
+            dist: calculateDistance(coords.lat, coords.lon, lat, lon)
+        };
+    })
+    .sort((a, b) => a.dist - b.dist)
+    .slice(0, nbMax);
+
+    statusDiv.innerText = `${restaurants.length} restaurant(s) trouvé(s).`;
+
+    if (usePhoton && restaurants.length > 0) {
+        progress.style.display = "block";
+        for (let i = 0; i < restaurants.length; i++) {
+            progress.innerHTML = `<div class="spinner" style="width:15px;height:15px;border-width:2px;"></div> Enrichissement : ${i + 1}/${restaurants.length}`;
+            if (!restaurants[i].adresse) {
+                const data = await reversePhoton(restaurants[i].lat, restaurants[i].lon);
+                if (data) restaurants[i].adresse = data.adresse;
+                await new Promise(r => setTimeout(r, 200));
+            }
+        }
+        progress.style.display = "none";
+    }
+
+    if (restaurants.length === 0) {
+        showMsg("Aucun restaurant trouvé pour ces critères.", "info");
+        return;
+    }
+
+    const exportBtn = document.createElement("button");
+    exportBtn.className = "secondary";
+    exportBtn.innerText = "📥 Télécharger la liste (CSV)";
+    exportBtn.onclick = () => exportCSV(restaurants);
+    actionsArea.appendChild(exportBtn);
+
+    restaurants.forEach(r => {
+        const popupContent = `
+            <div style="font-family:'Segoe UI',sans-serif; min-width:150px;">
+                <h3 style="margin:0 0 5px 0; color:#2e7dff;">${r.nom}</h3>
+                <div style="font-size:0.9em; font-weight:bold; color:#555;">${r.cuisine}</div>
+                <div style="font-size:0.85em; margin-top:5px;">${r.adresse || "Adresse non disponible"}</div>
+            </div>
+        `;
+        L.marker([r.lat, r.lon]).addTo(markersLayer).bindPopup(popupContent);
+
+        const card = document.createElement("div");
+        card.className = "restaurant-card";
+        const nomHtml = r.hasNoName ? `<span style="color:#999; font-style:italic;">Nom non précisé</span>` : r.nom;
+        
+        card.innerHTML = `
+            <div>
+                <div class="card-title">${nomHtml}</div>
+                <span class="card-tag">${r.cuisine}</span>
+                <div class="card-address">📍 ${r.adresse || "Adresse non renseignée"}</div>
+            </div>
+            <div class="card-dist"> à ${(r.dist / 1000).toFixed(2)} km</div>
+        `;
+        resultsDiv.appendChild(card);
+    });
+}
+</script>
+</body>
+</html>

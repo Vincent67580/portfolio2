@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 function Projects({ limit }) {
   if (!projects) return null;
 
-  // On limite 
-  const displayedProjects = limit ? projects.slice(0, limit) : projects;
+  // 1. On crée une copie et on trie par ID décroissant (du plus grand au plus petit)
+  const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
+
+  // 2. On applique la limite sur les projets déjà triés
+  const displayedProjects = limit ? sortedProjects.slice(0, limit) : sortedProjects;
 
   return (
     <section id="projets" className="projects-section">
