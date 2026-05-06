@@ -59,10 +59,19 @@ function App() {
 
 // Petit composant utilitaire pour rediriger les erreurs 404 vers l'accueil
 function HomeRedirect() {
-  return <div style={{ padding: '100px', textAlign: 'center' }}>
-    <h2>Page non trouvée</h2>
-    <a href="/">Retourner à l'accueil</a>
-  </div>;
+  return (
+    <div className="error-container">
+      <div className="error-content">
+        <Icon icon="tabler:error-404" width="100" className="error-icon" />
+        <h2>Oups ! Page non trouvée</h2>
+        <p>Il semble que vous vous soyez égaré dans les méandres du code.</p>
+        <Link to="/" className="btn-error">
+          <Icon icon="mdi:home" width="20" />
+          Retourner à l'accueil
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 export default App;

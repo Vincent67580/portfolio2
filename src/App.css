@@ -656,3 +656,69 @@ body {
 .all-experiences-page .btn-view-all {
   display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.error-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.error-content {
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  width: 100%;
+}
+
+.error-icon {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.error-content h2 {
+  margin-bottom: 15px;
+  color: var(--text-color);
+  font-size: 1.8rem;
+}
+
+.error-content p {
+  color: var(--text-light);
+  margin-bottom: 30px;
+}
+
+.btn-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-error:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+  background-color: rgba(var(--primary-rgb), 0.9);
+}

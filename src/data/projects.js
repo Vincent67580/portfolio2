@@ -6,7 +6,7 @@ export const projects = [
     description: "Réalisé en HTML/CSS/JS statique.",
     tech: ["HTML", "CSS", "JavaScript"],
     link: "#",
-    image: "/imageProjetPortfolio.png"
+    image: "imageProjetPortfolio.png"
   },
   {
     id: 2,

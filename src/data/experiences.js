@@ -12,7 +12,7 @@ export const experiences = [
       "Développement d'outils Excel avec VBA.",
       "Missions de cybersécurité et rédaction de procédures techniques."
     ],
-    logo: "/Logo_Trumpf.png",
+    logo: "Logo_Trumpf.png",
     intro: `Durant ma deuxième année de BTS SIO, j’ai effectué un stage au sein de TRUMPF Machines SARL à Haguenau, du 12 janvier 2026 au 13 février 2026.
 
     Ce stage m’a permis de participer à différents projets informatiques, notamment autour des outils Microsoft (Power Apps, Excel, VBA), de la cybersécurité et de la gestion des systèmes d’information.`,
@@ -83,7 +83,7 @@ export const experiences = [
       "Maintenance sur une application PowerApps.",
       "Correction de problèmes d’affichage et amélioration de la fiabilité de l’interface."
     ],
-    logo: "/Logo_Trumpf.png",
+    logo: "Logo_Trumpf.png",
     intro: "Ce stage avait pour objectif principal la maintenance, l’optimisation et l’évolution d’une application interne de commande de repas développée sous Microsoft Power Apps et connectée à SharePoint et Power Automate.",
     detailedMissions: [
       {
@@ -126,7 +126,7 @@ export const experiences = [
       "Tests et mise en service d’une application développée en interne.",
       "Validation des fonctionnalités et accompagnement des utilisateurs."
     ],
-    logo: "/Logo_Trumpf.png"
+    logo: "Logo_Trumpf.png"
   },
   {
     id: 4,
@@ -139,7 +139,7 @@ export const experiences = [
       "Développement d’une application PowerApps pour la commande de repas par les salariés.",
       "Tests, mise en service et suivi du déploiement dans l’entreprise."
     ],
-    logo: "/Logo_Trumpf.png"
+    logo: "Logo_Trumpf.png"
   },
   {
     id: 5,
