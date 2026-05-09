@@ -1,20 +1,32 @@
 import { Icon } from '@iconify/react';
+import { contactLinks } from '../data/contact'; 
 
 function Contact() {
   return (
-    <section id="contact" className="contact">
-      <h2 className="section-title">Me contacter</h2>
-      <p>N’hésitez pas à me contacter via les moyens suivants :</p>
-      <div className="contact-buttons">
-        <a href="mailto:vbonnet.vincent@gmail.com" className="btn-contact">
-          <Icon icon="fluent-emoji-flat:e-mail" /> Envoyer un e-mail
-        </a>
-        <a href="https://www.linkedin.com/in/vincent-bonnet-06-" target="_blank" rel="noreferrer" className="btn-contact">
-          <Icon icon="bi:linkedin" /> LinkedIn
-        </a>
-        <a href="https://github.com/Vincent67580" target="_blank" rel="noreferrer" className="btn-contact">
-          <Icon icon="bi:github" /> GitHub
-        </a>
+    <section id="contact" className="contact-section">
+      <div className="container">
+        <h2 className="section-title">Me contacter</h2>
+        <p className="contact-subtitle">
+          Une opportunité d'alternances ou une question ? N'hésitez pas à me joindre.
+        </p>
+        
+        <div className="contact-grid">
+          {contactLinks.map((contact) => (
+            <a 
+              key={contact.id} 
+              href={contact.url} 
+              target={contact.name !== "Email" ? "_blank" : "_self"} 
+              rel="noreferrer" 
+              className={`contact-card ${contact.name.toLowerCase()}`}
+            >
+              <div className="icon-wrapper">
+                <Icon icon={contact.icon} width="40" />
+              </div>
+              <span>{contact.label}</span>
+              <small>{contact.subLabel}</small>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

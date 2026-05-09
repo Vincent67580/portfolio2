@@ -1,10 +1,14 @@
 /* src/App.css */
+/* ==========================================================================
+   PARTIE 1 : CONFIGURATION & NAVIGATION + RESPONSIVE
+   ========================================================================== */
+
 :root {
   --primary-rgb: 239, 68, 68; 
   --primary-color: rgb(var(--primary-rgb));
   --primary-light: rgba(var(--primary-rgb), 0.1);
   /* --primary-color: rgb(37, 99, 235); */
-  --btn-color : colorfade(#2563eb,10%)
+  --btn-color : rgba(37, 99, 235, 0.1); 
   --bg-color: #ffffff;
   --text-color: #1f2937;
   --font-main: 'Inter', system-ui, sans-serif;
@@ -15,12 +19,17 @@ body {
   font-family: var(--font-main);
   background-color: var(--bg-color);
   color: var(--text-color);
+  padding-top: 80px; 
+  overflow-x: hidden; /* Empêche le scroll horizontal parasite */
 }
 
+
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box; /* Crucial pour que le padding ne casse pas la largeur */
 }
 
 .navbar {
@@ -37,7 +46,7 @@ body {
 
 .nav-container {
   width: 100%;
-  max-width: 1200px; /* Aligne-toi sur la largeur de ton .container global */
+  max-width: 1200px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,7 +73,6 @@ body {
   color: var(--primary-color);
 }
 
-
 /* Bouton pour la page d'accueil */
 .btn-view-all {
   display: inline-flex;
@@ -76,7 +84,7 @@ body {
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
-  transition:  0.3s;
+  transition: 0.3s;
 }
 
 .btn-view-all:hover {
@@ -84,7 +92,6 @@ body {
   background-color: rgba(var(--primary-rgb), 0.85); 
   box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
 }
-
 
 .section-title {
   text-align: center;
@@ -104,10 +111,60 @@ body {
   border-radius: 2px;
 }
 
+/* --- AJOUT DU RESPONSIVE MOBILE POUR LA PARTIE 1 --- */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 110px; /* Plus d'espace car la navbar devient plus haute */
+  }
+
+  .nav-container {
+    flex-direction: column; /* On empile logo et menu sur mobile */
+    gap: 15px;
+    padding: 1rem;
+  }
+
+  .navbar ul {
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem; /* Titre plus petit sur téléphone */
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar ul {
+    gap: 0.8rem;
+    flex-wrap: wrap; /* Permet aux liens de passer à la ligne si trop nombreux */
+  }
+  
+  .btn-view-all {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    width: 80%; 
+    justify-content: center;
+  }
+}
 
 
 
-/* Projet */
+/* ==========================================================================
+   PARTIE 2 : PROJETS + RESPONSIVE
+   ========================================================================== */
+
 /* --- SECTION PROJETS --- */
 .projects-section {
   padding: 40px 20px;
@@ -265,7 +322,7 @@ body {
 .btn-action.primary:hover {
   background-color: white ; 
   box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.8);
-  color : var(--primary-color)
+  color : var(--primary-color);
 }
 
 .btn-action.secondary {
@@ -280,17 +337,51 @@ body {
   color: white;
 }
 
-/* BOUTON "VOIR TOUS LES PROJETS" */
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 2)
+   ========================================================================== */
 
-
-/* RESPONSIVE */
 @media (max-width: 768px) {
+  .projects-section {
+    padding: 20px 15px;
+  }
+
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+    gap: 20px;
+  }
+
+  .project-image {
+    height: 180px; /* On réduit un peu la hauteur de l'image */
+  }
+
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-actions {
+    flex-direction: column; /* Boutons l'un au-dessus de l'autre sur mobile */
+    gap: 10px;
   }
   
-  .section-title {
-    font-size: 2rem;
+  .btn-action {
+    width: 90%;
+    padding: 12px; /* Plus facile à cliquer avec le pouce */
+  }
+}
+
+@media (max-width: 480px) {
+  .project-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .tech-icons-grid {
+    gap: 8px;
+  }
+
+  .tech-icon-item {
+    font-size: 0.75rem;
+    padding: 4px 8px;
   }
 }
 
@@ -299,7 +390,38 @@ body {
 
 
 
-/* About */
+
+
+
+/* ==========================================================================
+   PARTIE 3 : HERO BANNER & ABOUT + RESPONSIVE
+   ========================================================================== */
+
+/* --- EN-TETE (HERO BANNER) --- */
+.hero-banner {
+  height: 25vh;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(var(--primary-rgb)); 
+  color: white;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+
+.hero-banner h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+/* --- SECTION ABOUT --- */
 .about-section {
   margin: 10px 0;
 }
@@ -342,7 +464,7 @@ body {
   margin: 0;
 }
 
-/* Container des boutons */
+/* --- BOUTONS CV --- */
 .cv-buttons {
   display: flex;
   justify-content: center;
@@ -360,7 +482,7 @@ body {
   align-items: center;
   gap: 10px;
   
-  /* État initial : Fond blanc, texte bleu, bordure bleue */
+  /* État initial : Fond blanc, texte rouge, bordure rouge */
   background-color: white;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
@@ -370,46 +492,78 @@ body {
   cursor: pointer;
 }
 
-/* État au survol (Hover) pour les deux boutons */
+/* État au survol (Hover) */
 .btn-cv:hover {
-  /* Au survol : Fond bleu, texte blanc */
   background-color: var(--primary-color);
   color: white;
   
   /* Petit effet de mouvement et ombre */
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(var(--primary-rgb), 0.2);
-  
+}
+
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 3)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hero Banner */
+  .hero-banner {
+    height: auto; /* On laisse le contenu dicter la hauteur */
+    padding: 40px 20px;
+    margin: 10px 0;
+  }
+
+  .hero-banner h1 {
+    font-size: 2.2rem; /* Réduction drastique pour mobile */
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  /* Compétences */
+  .competence-grid {
+    grid-template-columns: 1fr; /* Une seule colonne */
+    gap: 15px;
+  }
+
+  /* Boutons CV */
+  .cv-buttons {
+    flex-direction: column; /* Boutons empilés */
+    align-items: center;
+    gap: 15px;
+  }
+
+  .btn-cv {
+    width: 100%; /* Les boutons prennent toute la largeur disponible */
+    max-width: 300px;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .interests-section {
+    padding: 20px;
+  }
+
+  .interests-content p {
+    font-size: 1rem;
+    text-align: justify; /* Plus propre sur petit écran */
+  }
+
+  .hero-banner h1 {
+    font-size: 1.8rem;
+  }
 }
 
 
+/* ==========================================================================
+   PARTIE 4 : COMPÉTENCES + RESPONSIVE
+   ========================================================================== */
 
-.hero-banner {
-  height: 25vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: rgba(var(--primary-rgb)); 
-  color: white;
-  border-radius: 20px;
-  margin: 20px 0;
-}
-
-.hero-banner h1 {
-  font-size: 3.5rem;
-  margin-bottom: 10px;
-}
-
-.hero-subtitle {
-  font-size: 1.4rem;
-  opacity: 0.9;
-}
-
-
-
-
-/* On réutilise la grille de compétences que tu avais déjà */
+/* Compétences */
 .skills-section {
   padding: 10px 0;
 }
@@ -421,7 +575,7 @@ body {
     gap: 25px;
 }
 
-/* Style de la carte (identique aux expériences) */
+/* Style de la carte */
 .skill-card {
     background: #ffffff;
     border-radius: 15px;
@@ -479,13 +633,52 @@ body {
     border: 1px solid #e2e8f0;
 }
 
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 4)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .skills-grid-container {
+        /* On réduit le minmax pour que les cartes s'adaptent aux écrans moyens */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .skill-card {
+        padding: 20px; /* Un peu moins de padding pour gagner de la place */
+    }
+
+    .skill-card-header {
+        gap: 10px;
+    }
+
+    .skill-card-header h3 {
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-grid-container {
+        /* Force une seule colonne sur les très petits écrans */
+        grid-template-columns: 1fr;
+    }
+
+    .tech-tags {
+        gap: 8px; /* On resserre les tags */
+    }
+
+    .tech-tag-item {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    .skill-description {
+        font-size: 0.9rem;
+    }
+}
 
 
-/* .section-title {
-  text-align: center;
-  margin: 40px 0;
-  font-size: 2.5rem;
-} */
+
 
 .objectif {
   background: #f8fafc;
@@ -495,48 +688,118 @@ body {
   text-align: center;
 }
 
-.contact {
+
+/* ==========================================================================
+   PARTIE 7 : CONTACT  + RESPONSIVE
+   ========================================================================== */
+
+/* --- SECTION CONTACT --- */
+.contact-section {
+  padding: 0px 20px 30px;
   text-align: center;
-  padding: 10px 0;
 }
 
-.contact-buttons {
+.contact-subtitle {
+  color: var(--text-light);
+  margin-bottom: 50px;
+  font-size: 1.1rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: var(--card-bg);
+  padding: 40px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(var(--primary-rgb), 0.1);
+}
+
+.icon-wrapper {
+  background: rgba(var(--primary-rgb), 0.05);
+  padding: 20px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.btn-contact {
-  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 25px;
-  border-radius: 50px;
-  text-decoration: none;
-  color: #333;
-  border: 1px solid #ddd;
-  transition: all 0.3s ease;
 }
 
-.btn-contact:hover {
-  background: var(--primary-color);
-  color: white;
-  transform: translateY(-3px);
+.contact-card span {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
-.footer {
-  text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid #eee;
-  color: #666;
+.contact-card small {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Effets au survol */
+.contact-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.15);
+  border-color: var(--primary-color);
+}
+
+.contact-card:hover .icon-wrapper {
+  transform: scale(1.1);
+  background: rgba(var(--primary-rgb), 0.1);
+}
+
+/* Couleurs spécifiques */
+.contact-card.linkedin:hover { color: #0077b5; }
+.contact-card.github:hover { color: #333; }
+.contact-card.email:hover { color: var(--primary-color); }
+
+
+
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 7)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 0 0px 40px; /* On réduit juste un peu l'espace autour de la section */
+  }
 }
 
 
+/* ==========================================================================
+   PARTIE 5 : EXPÉRIENCES & DÉTAILS STAGE + RESPONSIVE
+   ========================================================================== */
 
 /* --- SECTION EXPÉRIENCES --- */
-
 .experience-section {
   padding: 10px 20px;
   max-width: 1000px;
@@ -556,7 +819,6 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 1px solid #f1f5f9;
   transition: all 0.3s ease;
-  /* On centre les textes de l'en-tête */
   text-align: center; 
 }
 
@@ -566,7 +828,6 @@ body {
   border-color: var(--primary-color);
 }
 
-/* Badge de type (Stage / CDD) */
 .exp-type {
   display: inline-block;
   background: #eff6ff;
@@ -592,7 +853,6 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 25px;
-  /* Permet au texte de revenir à la ligne si les dates sont trop longues */
   word-wrap: break-word; 
   line-height: 1.4;
   max-width: 90%;
@@ -600,39 +860,34 @@ body {
   margin-right: auto;
 }
 
-/* --- LE BLOC DE MISSIONS (L'ASTUCE DU CENTRAGE) --- */
-
+/* --- MISSIONS (ASTUCE DU CENTRAGE) --- */
 .missions-list {
   list-style: none;
   padding: 0;
   margin: 20px auto; 
-  /* Le "fit-content" permet à la liste de ne pas prendre toute la largeur, 
-     ce qui permet de coller les puces au texte tout en centrant le bloc */
   max-width: fit-content; 
-  text-align: left; /* On réaligne le texte à gauche à l'intérieur du bloc centré */
+  text-align: left; 
 }
 
 .missions-list li {
   position: relative;
-  padding-left: 25px; /* Espace pour la puce */
+  padding-left: 25px;
   margin-bottom: 12px;
   color: #4b5563;
   line-height: 1.6;
   font-size: 1rem;
 }
 
-/* La puce (point bleu) bien positionnée */
 .missions-list li::before {
   content: "•";
   position: absolute;
   left: 0;
-  top: -2px; /* Ajustement vertical pour que ce soit en face de la première ligne */
+  top: -2px;
   color: var(--primary-color);
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-/* Localisation en bas de carte */
 .exp-location {
   display: inline-flex;
   align-items: center;
@@ -649,23 +904,6 @@ body {
   color: var(--primary-color);
 }
 
-/* --- RESPONSIVE --- */
-
-@media screen and (max-width: 600px) {
-  .experience-card {
-    padding: 20px;
-  }
-  
-  .experience-card h3 {
-    font-size: 1.2rem;
-  }
-  
-  .missions-list {
-    max-width: 100%; /* Sur mobile on reprend toute la largeur */
-  }
-}
-
-/* Container pour aligner localisation et bouton */
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -695,19 +933,7 @@ body {
   box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.2);
 }
 
-.btn-details svg {
-  font-size: 1.1rem;
-}
-
-/* Ajustement pour mobile */
-@media screen and (max-width: 600px) {
-  .card-footer {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-}
-
+/* --- PAGES DE DÉTAILS --- */
 .detail-page-wrapper {
   padding: 100px 0 60px;
   background-color: #f8fafc;
@@ -758,13 +984,28 @@ body {
 }
 
 .sub-list {
-  margin-top: 15px;
-  padding-left: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sub-list li {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
   color: #64748b;
 }
 
+.sub-list li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
 
-/* DETAIL STAGE */
 .btn-back {
   display: inline-block;
   margin-bottom: 20px;
@@ -774,78 +1015,74 @@ body {
   transition: transform 0.2s;
 }
 
-.btn-back:hover {
-  transform: translateX(-5px);
-}
-
 .detail-page {
-  padding: 120px 20px 60px; /* On laisse de la place pour la navbar fixe */
+  padding: 120px 20px 60px;
   max-width: 800px;
   margin: 0 auto;
   min-height: 80vh;
 }
 
-/* On cible la liste spécifique aux missions détaillées */
-.sub-list {
-  list-style: none; /* On retire les puces par défaut qui flottent à gauche */
-  padding: 0;
-  margin: 20px 0;
-  text-align: center; /* On centre le bloc de texte */
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 5)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Cartes Expériences */
+  .experience-card {
+    padding: 20px;
+  }
+
+  .experience-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .card-footer {
+    flex-direction: column; /* On empile localisation et bouton */
+    gap: 15px;
+    padding-top: 20px;
+  }
+
+  .btn-details {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  /* Page Détails */
+  .detail-header h1 {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+
+  .stage-info-grid {
+    grid-template-columns: 1fr; /* Info cards en une colonne */
+  }
+
+  .mission-block {
+    padding: 20px 15px;
+  }
+
+  .sub-list li {
+    font-size: 0.95rem;
+    flex-direction: column; /* Pour les textes très longs, on empile sous la puce */
+    gap: 5px;
+  }
 }
 
-.sub-list li {
-  margin-bottom: 10px;
-  display: flex; /* Utilisation de flex pour aligner la puce et le texte */
-  justify-content: center; /* Centre le contenu horizontalement */
-  align-items: center;
-  gap: 10px; /* Espace entre le point et le texte */
-  font-weight: 500;
-}
+@media (max-width: 480px) {
+  .missions-list li {
+    font-size: 0.9rem;
+  }
 
-/* On recrée une puce personnalisée qui restera collée au texte */
-.sub-list li::before {
-  content: "•";
-  color: var(--primary-color); /* Utilise ta couleur bleue */
-  font-size: 1.5rem;
-  line-height: 1;
+  .detail-page {
+    padding-top: 80px; /* Moins de padding car navbar mobile plus fine */
+  }
 }
 
 
 
 
-
-
-
-/* Espace de sécurité pour les pages de second niveau */
-.all-experiences-page {
-  min-height: 100vh;
-  padding-bottom: 80px;
-}
-
-/* On s'assure que le titre de la page complète est bien visible */
-.all-experiences-page .section-title {
-  margin-top: 40px;
-  margin-bottom: 50px;
-  font-size: 2.5rem;
-}
-
-/* On peut masquer le bouton "Voir toutes les expériences" s'il apparaît par erreur ici */
-.all-experiences-page .btn-view-all {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* BLOC ERREUR PAGE INTROUVABLE */
 .error-container {
   min-height: 70vh;
   display: flex;
@@ -898,4 +1135,251 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
   background-color: rgba(var(--primary-rgb), 0.9);
+}
+
+
+
+/* ==========================================================================
+   PARTIE 6 : VEILLE TECHNOLOGIQUE + RESPONSIVE
+   ========================================================================== */
+
+/* --- SECTION VEILLE TEASER (Accueil) --- */
+.veille-teaser {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.03) 0%, rgba(var(--primary-rgb), 0.08) 100%);
+  border-radius: 30px;
+  margin: 60px auto;
+  max-width: 1200px;
+  border: 1px solid rgba(var(--primary-rgb), 0.1);
+}
+
+.veille-teaser .section-title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.teaser-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  text-align: left;
+}
+
+.teaser-text {
+  flex: 2;
+}
+
+.teaser-text h3 {
+  font-size: 1.8rem;
+  color: var(--text-color, #333);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.teaser-text p {
+  font-size: 1.1rem;
+  color: var(--text-light, #666);
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.teaser-icon {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+}
+
+.floating-icon {
+  font-size: 120px;
+  animation: floatAnim 4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(var(--primary-rgb), 0.2));
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+}
+
+/* --- PAGE VEILLE DÉTAILLÉE --- */
+.veille-page {
+  padding: 70px 20px;
+}
+
+.veille-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subject-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(var(--primary-rgb), 0.1);
+  padding: 20px 40px;
+  border-radius: 50px;
+  margin-top: 20px;
+  border: 1px solid var(--primary-color);
+}
+
+.veille-section {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.question-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  border-left: 3px solid var(--primary-color);
+}
+
+.axes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.axe-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 20px;
+  border-top: 4px solid var(--primary-color);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap; /* Important pour éviter que les tags sortent de l'écran */
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tag {
+  font-size: 0.8rem;
+  background: #eee;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+
+/* --- IFRAME (START.ME) --- */
+.iframe-wrapper {
+  width: 100%;
+  height: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.startme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 6)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .teaser-content {
+    gap: 30px;
+  }
+  
+  .floating-icon {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Teaser mobile */
+  .teaser-content {
+    flex-direction: column-reverse; /* Robot en haut, texte en bas */
+    text-align: center;
+    gap: 40px;
+  }
+
+  .teaser-text h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Page Veille */
+  .subject-box {
+    padding: 15px 25px;
+    font-size: 0.9rem;
+    flex-direction: column; /* Icone au dessus du texte si besoin */
+    border-radius: 20px;
+  }
+
+  .axes-grid {
+    grid-template-columns: 1fr; /* Passage sur une colonne */
+    gap: 20px;
+  }
+
+  .iframe-wrapper {
+    height: 500px; /* Plus petit sur mobile */
+  }
+
+  .startme-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .veille-section {
+    padding: 20px 15px;
+  }
+  
+  .axe-card {
+    padding: 15px;
+  }
+
+  .floating-icon {
+    font-size: 70px;
+  }
+}
+
+
+
+
+/* --- FOOTER --- */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+  color: #666;
+  margin-top: 50px;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+    font-size: 0.85rem;
+  }
 }

@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 
 function Experiences({ limit }) {
   if (!experiences) return null;
-
-  // Si 'limit' est passé en paramètre, on ne prend que les X premiers
-  const displayedExperiences = limit ? experiences.slice(0, limit) : experiences;
+  // 1. On crée une copie et on trie par ID décroissant (du plus grand au plus petit)
+    const sortedExperiences = [...experiences].sort((a, b) => b.id - a.id);
+  
+    // 2. On applique la limite sur les expériences
+    const displayedExperiences = limit ? sortedExperiences.slice(0, limit) : sortedExperiences;
+  
 
   return (
     <section id="experience" className="experience-section">

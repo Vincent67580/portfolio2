@@ -1,6 +1,90 @@
 export const experiences = [
-  {
+    {
     id: 1,
+    company: "GILGER",
+    type: "Stage - BAC PRO SN",
+    location: "Niederbronn-les-Bains",
+    locationLink: "https://maps.app.goo.gl/1HRYhzcDYAmtKrqG7",
+    startDate: "21/03/2022",
+    endDate: "08/04/2022",
+    missions: [
+      "Installation et maintenance d’équipements électroniques.",
+      "Réparation d’équipements électriques et participation à des travaux techniques."
+    ]
+  },
+  {
+    id: 2,
+    company: "TRUMPF Machines SARL",
+    type: "Stage - BAC PRO SN",
+    location: "Haguenau",
+    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
+    displayDate: "Du 25/09/23 au 20/10/23 et du 05/06/23 au 30/06/23",
+    missions: [
+      "Développement d’une application PowerApps pour la commande de repas par les salariés.",
+      "Tests, mise en service et suivi du déploiement dans l’entreprise."
+    ],
+    logo: "Logo_Trumpf.png"
+  },
+  {
+    id: 3,
+    company: "TRUMPF Machines SARL",
+    type: "Stage - BAC PRO SN",
+    location: "Haguenau",
+    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
+    startDate: "11/03/2024",
+    endDate: "05/04/2024",
+    missions: [
+      "Tests et mise en service d’une application développée en interne.",
+      "Validation des fonctionnalités et accompagnement des utilisateurs."
+    ],
+    logo: "Logo_Trumpf.png"
+  },
+  {
+    id: 4,
+    company: "TRUMPF Machines SARL",
+    type: "Stage - BTS SIO - 1e année",
+    location: "Haguenau",
+    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
+    startDate: "02/06/2025",
+    endDate: "04/07/2025",
+    missions: [
+      "Maintenance sur une application PowerApps.",
+      "Correction de problèmes d’affichage et amélioration de la fiabilité de l’interface."
+    ],
+    logo: "Logo_Trumpf.png",
+    intro: "Ce stage avait pour objectif principal la maintenance, l’optimisation et l’évolution d’une application interne de commande de repas développée sous Microsoft Power Apps et connectée à SharePoint et Power Automate.",
+    detailedMissions: [
+      {
+        title: "Analyse et rédaction du cahier des charges",
+        content: "Le stage a débuté par la rédaction d’un cahier des charges complet afin de cadrer les modifications et évolutions à apporter à l’application de commande de repas. Plusieurs réunions ont été organisées avec les différents services afin d’identifier précisément les besoins des utilisateurs standards et administrateurs."
+      },
+      {
+        title: "Amélioration et optimisation de l’application Power Apps",
+        content: `
+        L’application existante a été retravaillée afin d’améliorer l’ergonomie et les performances. Le système de modification et d’annulation de commande a été entièrement refait en utilisant des flux Power Automate connectés à SharePoint.
+
+        Des vérifications ont été ajoutées afin d’empêcher la modification d’une commande pour un jour passé ou après l’heure limite (9h pour les utilisateurs standards, et plus pour les administrateurs afin qu'ils puissent effectuer des modifications au dernier moment).
+
+        Le système de vérification des commandes existantes a été optimisé en supprimant certaines dépendances aux flux Power Automate, permettant un gain significatif de rapidité.`
+     },
+      {
+        title: "Gestion des droits et rôles",
+        content: `
+        Un système de gestion des rôles a été mis en place pour différents profils : IT, RH, gestion des repas, direction, membres CSE, etc...
+
+        Plusieurs pages administrateur ont été développées :`,
+        subList: ["Affichage des profils ayant des droits spécifiques", "Ajout de nouveaux utilisateurs avec rôles", "Modification des droits existants"]
+      },
+      {
+        title: "Optimisation technique et Déploiement",
+        content: "Renommage des variables pour la lisibilité, optimisation des collections et rédaction de la documentation technique (guides administrateur et utilisateur).",
+        subList: ["Mode opératoire", "Guide administrateur", "Documentation technique"]
+      }
+    ]
+  },
+
+  {
+    id: 5,
     company: "TRUMPF Machines SARL",
     type: "Stage - BTS SIO - 2e année",
     location: "Haguenau",
@@ -71,87 +155,5 @@ export const experiences = [
     },
   ]
   },
-  {
-    id: 2,
-    company: "TRUMPF Machines SARL",
-    type: "Stage - BTS SIO - 1e année",
-    location: "Haguenau",
-    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
-    startDate: "02/06/2025",
-    endDate: "04/07/2025",
-    missions: [
-      "Maintenance sur une application PowerApps.",
-      "Correction de problèmes d’affichage et amélioration de la fiabilité de l’interface."
-    ],
-    logo: "Logo_Trumpf.png",
-    intro: "Ce stage avait pour objectif principal la maintenance, l’optimisation et l’évolution d’une application interne de commande de repas développée sous Microsoft Power Apps et connectée à SharePoint et Power Automate.",
-    detailedMissions: [
-      {
-        title: "Analyse et rédaction du cahier des charges",
-        content: "Le stage a débuté par la rédaction d’un cahier des charges complet afin de cadrer les modifications et évolutions à apporter à l’application de commande de repas. Plusieurs réunions ont été organisées avec les différents services afin d’identifier précisément les besoins des utilisateurs standards et administrateurs."
-      },
-      {
-        title: "Amélioration et optimisation de l’application Power Apps",
-        content: `
-        L’application existante a été retravaillée afin d’améliorer l’ergonomie et les performances. Le système de modification et d’annulation de commande a été entièrement refait en utilisant des flux Power Automate connectés à SharePoint.
-
-        Des vérifications ont été ajoutées afin d’empêcher la modification d’une commande pour un jour passé ou après l’heure limite (9h pour les utilisateurs standards, et plus pour les administrateurs afin qu'ils puissent effectuer des modifications au dernier moment).
-
-        Le système de vérification des commandes existantes a été optimisé en supprimant certaines dépendances aux flux Power Automate, permettant un gain significatif de rapidité.`
-     },
-      {
-        title: "Gestion des droits et rôles",
-        content: `
-        Un système de gestion des rôles a été mis en place pour différents profils : IT, RH, gestion des repas, direction, membres CSE, etc...
-
-        Plusieurs pages administrateur ont été développées :`,
-        subList: ["Affichage des profils ayant des droits spécifiques", "Ajout de nouveaux utilisateurs avec rôles", "Modification des droits existants"]
-      },
-      {
-        title: "Optimisation technique et Déploiement",
-        content: "Renommage des variables pour la lisibilité, optimisation des collections et rédaction de la documentation technique (guides administrateur et utilisateur).",
-        subList: ["Mode opératoire", "Guide administrateur", "Documentation technique"]
-      }
-    ]
-  },
-  {
-    id: 3,
-    company: "TRUMPF Machines SARL",
-    type: "Stage - BAC PRO SN",
-    location: "Haguenau",
-    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
-    startDate: "11/03/2024",
-    endDate: "05/04/2024",
-    missions: [
-      "Tests et mise en service d’une application développée en interne.",
-      "Validation des fonctionnalités et accompagnement des utilisateurs."
-    ],
-    logo: "Logo_Trumpf.png"
-  },
-  {
-    id: 4,
-    company: "TRUMPF Machines SARL",
-    type: "Stage - BAC PRO SN",
-    location: "Haguenau",
-    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
-    displayDate: "Du 25/09/23 au 20/10/23 et du 05/06/23 au 30/06/23",
-    missions: [
-      "Développement d’une application PowerApps pour la commande de repas par les salariés.",
-      "Tests, mise en service et suivi du déploiement dans l’entreprise."
-    ],
-    logo: "Logo_Trumpf.png"
-  },
-  {
-    id: 5,
-    company: "GILGER",
-    type: "Stage - BAC PRO SN",
-    location: "Niederbronn-les-Bains",
-    locationLink: "https://maps.app.goo.gl/1HRYhzcDYAmtKrqG7",
-    startDate: "21/03/2022",
-    endDate: "08/04/2022",
-    missions: [
-      "Installation et maintenance d’équipements électroniques.",
-      "Réparation d’équipements électriques et participation à des travaux techniques."
-    ]
-  }
+  
 ];

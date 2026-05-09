@@ -9,9 +9,9 @@ function SkillsDetail() {
     }, []);
 
     return (
-        <main className="skills-detail-page" style={{ paddingTop: '50px', paddingBottom: '50px' }}>
+        <main className="skills-detail-page" style={{ paddingTop: '70px', paddingBottom: '50px' }}>
             <div className="container">
-                <h1 className="section-title">Mes Compétences</h1>
+                <h2 className="section-title">Mes Compétences</h2>
                 <p style={{ textAlign: 'center', marginBottom: '40px', color: '#64748b' }}>
                     Aperçu détaillé de mes domaines d'expertise technique et outils maîtrisés.
                 </p>

@@ -2,16 +2,17 @@ export const skills = [
     { 
         id: "web",
         title: "Développement Web", 
-        icon: "noto:desktop-computer", 
-        desc: "HTML, CSS, JavaScript, PHP, MySQL",
-        detailText: `Je maîtrise les langages du développement web, notamment HTML5, CSS3 et JavaScript pour la partie front-end, ainsi que PHP et MySQL pour le back-end. 
-        J’ai également l’habitude de gérer les formulaires, les sessions utilisateurs et les interactions avec des bases de données.`,
+        icon: "line-md:computer", 
+        desc: "HTML, CSS, JavaScript, PHP, MySQL, React",
+        detailText: `Je maîtrise le développement web moderne. Initialement formé sur HTML/PHP, j'ai évolué vers des technologies plus actuelles comme React.js et Vite pour créer des interfaces dynamiques et performantes. Je gère aussi bien le front-end que les interactions back-end avec bases de données.`,
         technos: [
             { name: "HTML5", icon: "vscode-icons:file-type-html" },
             { name: "CSS3", icon: "simple-icons:css3", color: "#1572B6" },
             { name: "JavaScript", icon: "logos:javascript" },
             { name: "PHP", icon: "vscode-icons:file-type-php" },
-            { name: "MySQL", icon: "logos:mysql-icon" }
+            { name: "MySQL", icon: "logos:mysql-icon" },
+            { name: "React", icon: "logos:react" },
+            { name: "Vite", icon: "logos:vitejs" }
         ]
     },
     { 
@@ -55,14 +56,15 @@ export const skills = [
         id: "tools",
         title: "Outils & Méthodes", 
         icon: "noto:puzzle-piece", 
-        desc: "Git, VS Code, GitHub",
+        desc: "Git, VS Code, GitHub, IA",
         detailText: `J’utilise des outils de développement comme Git, GitHub et Visual Studio Code. Je travaille principalement sous Windows, avec quelques notions sur Linux.`,
         technos: [
             { name: "Git", icon: "logos:git-icon" },
             { name: "GitHub", icon: "mdi:github" },
             { name: "VS Code", icon: "vscode-icons:file-type-vscode" },
             { name: "Windows", icon: "mdi:microsoft-windows", color: "#0078D6" },
-            { name: "Linux", icon: "logos:linux-tux" }
+            { name: "Linux", icon: "logos:linux-tux" },
+            { name: "IA", icon: "lucide:bot", color: "#FF4400" }
         ]
     },
     { 

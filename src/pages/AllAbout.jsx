@@ -8,7 +8,7 @@ function AboutFull() {
 
   return (
     <div className="about-page-full">
-      <main style={{ paddingTop: '40px' }}>
+      <main style={{ paddingTop: '60px' , paddingBottom: '30px'}}>
         <div className="container">
           <header className="en_tete">
             <h1 className="section-title">Parcours & Informations</h1>

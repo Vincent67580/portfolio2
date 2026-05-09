@@ -9,6 +9,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Experiences from './components/Experiences';
 import Projects from './components/Projects';
+import VeilleTeaser from './components/VeilleTeaser';
 import Contact from './components/Contact'; 
 import Footer from './components/Footer';
 
@@ -18,6 +19,7 @@ import ExperienceDetail from './pages/ExperienceDetail';
 import AllExperiences from './pages/AllExperiences';
 import AllAbout from './pages/AllAbout';
 import SkillsDetail from './pages/SkillsDetail';
+import Veille from './pages/Veille';
 
 function App() {
   return (
@@ -34,9 +36,10 @@ function App() {
             <main style={{ paddingTop: '50px' }}>
               <Hero />
               <About />
-              <Experiences limit={2} />
               <Skills />
               <Projects limit={2} />
+              <Experiences limit={2} />
+              <VeilleTeaser />
               <Contact /> 
             </main>
           } />
@@ -46,6 +49,7 @@ function App() {
           <Route path="/skills" element={<SkillsDetail />} />
           <Route path="/projets" element={<AllProjects />} />
           <Route path="/experiences" element={<AllExperiences />} />
+          <Route path="/veille" element={<Veille />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
           
           {/* Optionnel : Redirection si la route n'existe pas */}

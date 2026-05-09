@@ -16,6 +16,7 @@ function Navbar() {
           <li><NavHashLink to="/experiences">Expériences</NavHashLink></li>
           <li><NavHashLink to="/skills">Compétences</NavHashLink></li>
           <li><NavHashLink to="/projets">Projets</NavHashLink></li>
+          <li><NavHashLink to="/veille">Veille</NavHashLink></li>
           <li>
             {/* Si la section contact est sur la page d'accueil */}
             <NavHashLink smooth to="/#contact">Contact</NavHashLink>
