@@ -6,7 +6,7 @@ function SkillsDetail() {
         <main>
             <div className="container">
                 <h2 className="section-title">Mes Compétences</h2>
-                <p style={{ textAlign: 'center', marginBottom: '40px', color: '#64748b' }}>
+                <p className="SkillsPara">
                     Aperçu détaillé de mes domaines d'expertise technique et outils maîtrisés.
                 </p>
                 

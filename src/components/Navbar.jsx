@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
+import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,10 +11,14 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-container">
+        
         <div className="logo">
-          <NavHashLink to="/" onClick={closeMenu}>
+          <NavHashLink to="/" onClick={closeMenu} className="logo-link">
             <strong>BONNET Vincent</strong>
           </NavHashLink>
+        </div>
+        <div className="nav-controls" style={{ display: 'flex', alignItems: 'center', gap: '15px', marginLeft: 'auto', marginRight: '15px' }}>
+          <ThemeToggle />
         </div>
 
         <button className="menu-toggle" onClick={toggleMenu} aria-label="Menu">
@@ -34,6 +39,8 @@ function Navbar() {
           <li><NavHashLink to="/veille" onClick={closeMenu}>Veille</NavHashLink></li>
           <li><NavHashLink to="/contact" onClick={closeMenu}>Contact</NavHashLink></li>
         </ul>
+
+        
       </div>
     </nav>
   );

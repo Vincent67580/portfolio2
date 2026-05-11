@@ -3,16 +3,29 @@
    PARTIE 1 : CONFIGURATION & NAVIGATION + RESPONSIVE
    ========================================================================== */
 
-:root {
-  --primary-rgb: 239, 68, 68;
-  /* --primary-rgb: 37, 99, 235;  */
-  --primary-color: rgb(var(--primary-rgb));
-  --primary-light: rgba(var(--primary-rgb), 0.1);
-
-  --btn-color : rgba(37, 99, 235, 0.1); 
-  --bg-color: #ffffff;
-  --text-color: #1f2937;
+:root {  
   --font-main: 'Inter', system-ui, sans-serif;
+
+  --primary-rgb: 239, 68, 68;    /* Rouge */
+  --secondary-rgb: 37, 99, 235;  /* Bleu */
+  --primary-color: rgb(var(--primary-rgb));
+  --secondary-color: rgb(var(--secondary-rgb));
+  
+/* Variables qui vont changer */
+  --bg-color: #ffffff;
+  --bg-card: #f8fafc;
+  --text-color: #1f2937;
+  --text-light: #64748b;
+  --border-color: rgba(0, 0, 0, 0.05);
+}
+
+/* --- THÈME SOMBRE --- */
+[data-theme='dark'] {
+  --bg-color: #0f172a;       /* Bleu très foncé / Noir */
+  --bg-card: #1e293b;        /* Gris-bleu foncé pour les cartes */
+  --text-color: #f1f5f9;     /* Blanc cassé */
+  --text-light: #94a3b8;     /* Gris clair */
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -22,7 +35,14 @@ body {
   color: var(--text-color);
   padding-top: 80px; 
   overflow-x: hidden; /* Empêche le scroll horizontal parasite */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+} */
 
 main{
   padding-top:0px;
@@ -114,7 +134,7 @@ main{
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: var(--bg-color);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 2000; /* Priorité haute */
   display: flex;
@@ -123,12 +143,71 @@ main{
 
 .nav-container {
   width: 100%;
-  max-width: 1200px; 
+  max-width: 90%; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
 }
+
+.logo {
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-link strong {
+  /* Dégradé de couleur avec tes variables */
+  background: linear-gradient(
+    120deg, 
+    var(--primary-color), 
+    var(--secondary-color), 
+    var(--primary-color)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Animation de brillance continue et très lente */
+  animation: shineLogo 4s linear infinite;
+}
+
+/* Soulignement stylé au survol */
+.logo-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+/* --- INTERACTIONS --- */
+
+.logo-link:hover {
+  transform: scale(1.05) rotate(-1deg); /* Petit effet de "pop" dynamique */
+}
+
+.logo-link:hover::after {
+  width: 100%;
+}
+
+/* L'animation qui fait glisser le dégradé */
+@keyframes shineLogo {
+  to {
+    background-position: 200% center;
+  }
+}
+
 
 /* Conteneur des liens */
 .nav-links {
@@ -217,7 +296,7 @@ main{
     right: -100%; /* Caché à droite */
     width: 80%;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: var(--bg-color);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -272,6 +351,25 @@ main{
 }
 
 
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  background: var(--primary-light);
+}
+
+
 
 /* ==========================================================================
    PARTIE 2 : PROJETS + RESPONSIVE
@@ -294,7 +392,7 @@ main{
 
 /* --- CARTE PROJET --- */
 .project-card {
-  background: var(--card-bg, #ffffff);
+  background: var(--bg-card);
   border-radius: 15px;
   overflow: hidden;
   display: flex;
@@ -347,7 +445,7 @@ main{
 .project-content p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--text-light, #666);
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
@@ -432,7 +530,7 @@ main{
 }
 
 .btn-action.primary:hover {
-  background-color: white ; 
+  background-color: var(--bg-color) ; 
   box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.8);
   color : var(--primary-color);
 }
@@ -446,7 +544,7 @@ main{
 .btn-action.secondary:hover {
   background-color: var(--primary-color);
   box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.5);
-  color: white;
+  color: var(--bg-color);
 }
 
 /* ==========================================================================
@@ -547,7 +645,7 @@ main{
 }
 
 .competence-card {
-  background: #f8fafc;
+  background: var(--bg-card);
   padding: 25px;
   border-radius: 15px;
   text-align: center;
@@ -561,7 +659,7 @@ main{
 }
 
 .interests-section {
-  background-color: #f1f5f9; /* Un fond léger pour séparer les sections */
+  background-color: var(--bg-card); /* Un fond léger pour séparer les sections */
   padding: 30px;
   border-radius: 12px;
   margin: 40px 0;
@@ -595,8 +693,7 @@ main{
   align-items: center;
   gap: 10px;
   
-  /* État initial : Fond blanc, texte rouge, bordure rouge */
-  background-color: white;
+  background-color: var(--bg-color);
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
   
@@ -682,6 +779,12 @@ main{
   padding: 10px 0;
 }
 
+.SkillsPara { 
+  text-align: center;
+  margin-Bottom: 40px; 
+  color: var(--text-light)
+}
+
 /* Grille pour les compétences */
 .skills-grid-container {
     display: grid;
@@ -691,7 +794,7 @@ main{
 
 /* Style de la carte */
 .skill-card {
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -710,7 +813,7 @@ main{
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #f8fafc;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 15px;
 }
 
@@ -723,7 +826,7 @@ main{
 .skill-description {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #475569;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -814,7 +917,7 @@ main{
 }
 
 .contact-subtitle {
-  color: var(--text-light);
+  color: var(--text-color);
   margin-bottom: 50px;
   font-size: 1.1rem;
 }
@@ -828,7 +931,7 @@ main{
 }
 
 .contact-card {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 40px 20px;
   border-radius: 20px;
   text-decoration: none;
@@ -927,11 +1030,11 @@ main{
 }
 
 .experience-card {
-  background: white;
+  background: var(--bg-card);
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f1f5f9;
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
   text-align: center; 
 }
@@ -957,7 +1060,7 @@ main{
 
 .experience-card h3 {
   margin: 5px 0;
-  color: #1e293b;
+  color: var(--text-color);
   font-size: 1.5rem;
   font-weight: 700;
 }
@@ -987,7 +1090,7 @@ main{
   position: relative;
   padding-left: 25px;
   margin-bottom: 12px;
-  color: #4b5563;
+  color: var(--text-color);
   line-height: 1.6;
   font-size: 1rem;
 }
@@ -1050,7 +1153,7 @@ main{
 /* --- PAGES DE DÉTAILS --- */
 .detail-page-wrapper {
   padding: 0px 0 60px;
-  background-color: #f8fafc;
+  background-color: var(--bg-color);
   min-height: 100vh;
 }
 
@@ -1059,7 +1162,10 @@ main{
   margin-bottom: 40px;
 }
 
-.detail-header h1 { font-size: 2.5rem; color: #1e293b; }
+.detail-header h1 { 
+  font-size: 2.5rem; 
+  color: var(--text-color); 
+}
 
 .stage-info-grid {
   display: grid;
@@ -1069,7 +1175,7 @@ main{
 }
 
 .info-card {
-  background: white;
+  background: var(--bg-card);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -1082,7 +1188,7 @@ main{
 }
 
 .mission-block {
-  background: white;
+  background: var(--bg-card);
   padding: 30px;
   border-radius: 12px;
   margin-bottom: 25px;
@@ -1093,7 +1199,7 @@ main{
 .mission-block h3 {
   color: var(--primary-color);
   margin-bottom: 15px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-color); 
   padding-bottom: 10px;
 }
 
@@ -1132,7 +1238,7 @@ main{
   font-size: 0.95rem;
   padding: 8px 16px;
   border-radius: 8px;
-  background-color: rgba(var(--primary-rgb), 0.05); /* Fond très léger */
+  background-color: var(--bg-card); 
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1272,7 +1378,7 @@ main{
 
 .teaser-text p {
   font-size: 1.1rem;
-  color: var(--text-light, #666);
+  color: var(--text-color);
   line-height: 1.7;
   margin-bottom: 30px;
 }
@@ -1314,7 +1420,7 @@ main{
 }
 
 .veille-section {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 30px;
   border-radius: 20px;
   margin-bottom: 30px;
@@ -1332,7 +1438,7 @@ main{
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #f8f9fa;
+  background: var(--bg-color);
   padding: 15px;
   border-radius: 10px;
   font-size: 0.9rem;
@@ -1347,7 +1453,7 @@ main{
 }
 
 .axe-card {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 25px;
   border-radius: 20px;
   border-top: 4px solid var(--primary-color);
@@ -1362,7 +1468,7 @@ main{
 
 .tag {
   font-size: 0.8rem;
-  background: #eee;
+  background: var(--bg-color);
   padding: 4px 12px;
   border-radius: 15px;
 }
@@ -1490,7 +1596,7 @@ main{
 }
 
 .error-content {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 50px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -1544,7 +1650,6 @@ main{
 .contact-page-simple {
   padding: 0px 20px 20px;
   min-height: 100vh;
-  /* background-color: #fafafa; */
   text-align: center;
 }
 
@@ -1575,7 +1680,7 @@ main{
 }
 
 .contact-main-card {
-  background: white;
+  background : var(--bg-card);
   padding: 50px 30px;
   border-radius: 24px;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -1672,7 +1777,7 @@ main{
   align-items: center;
   gap: 10px;
   padding: 12px 25px;
-  background: white;
+  background: var(--bg-color);
   border: 1px solid #eee;
   border-radius: 50px;
   color: var(--text-color);
