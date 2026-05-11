@@ -1,15 +1,9 @@
 import { skills } from "../data/skills";
 import { Icon } from '@iconify/react';
-import { useEffect } from 'react';
 
 function SkillsDetail() {
-    
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
-        <main className="skills-detail-page" style={{ paddingTop: '70px', paddingBottom: '50px' }}>
+        <main>
             <div className="container">
                 <h2 className="section-title">Mes Compétences</h2>
                 <p style={{ textAlign: 'center', marginBottom: '40px', color: '#64748b' }}>

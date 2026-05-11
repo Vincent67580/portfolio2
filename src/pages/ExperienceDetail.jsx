@@ -15,7 +15,7 @@ function ExperienceDetail() {
     <div className="detail-page-wrapper">
       <div className="container">
         <Link to="/experiences" className="btn-back">
-          <Icon icon="mdi:arrow-left" /> Retour aux stages
+           Retour aux stages
         </Link>
 
         <header className="detail-header">

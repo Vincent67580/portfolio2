@@ -1,14 +1,9 @@
-import { useEffect } from 'react';
 import { veilleData } from '../data/veille';
 import { Icon } from '@iconify/react';
 
 function Veille() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
-
   return (
-    <main className="veille-page">
+    <main>
       <div className="container">
         <header className="veille-intro">
           <h2 className="section-title">{veilleData.title}</h2>

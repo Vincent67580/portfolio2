@@ -12,6 +12,7 @@ import Projects from './components/Projects';
 import VeilleTeaser from './components/VeilleTeaser';
 import Contact from './components/Contact'; 
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // Import des pages détaillées
 import AllProjects from './pages/AllProjects';
@@ -20,12 +21,14 @@ import AllExperiences from './pages/AllExperiences';
 import AllAbout from './pages/AllAbout';
 import SkillsDetail from './pages/SkillsDetail';
 import Veille from './pages/Veille';
+import ContactPage from './pages/ContactPage';
+
 
 function App() {
   return (
+    
     <Router>
-      {/* Point d'ancrage pour remonter en haut de page */}
-      <div id="top"></div>
+      <ScrollToTop />
       
       <Navbar />
 
@@ -33,7 +36,7 @@ function App() {
         <Routes>
           {/* ROUTE PRINCIPALE : Page d'accueil avec sections limitées */}
           <Route path="/" element={
-            <main style={{ paddingTop: '50px' }}>
+            <main>
               <Hero />
               <About />
               <Skills />
@@ -51,6 +54,7 @@ function App() {
           <Route path="/experiences" element={<AllExperiences />} />
           <Route path="/veille" element={<Veille />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
+          <Route path="/contact" element={<ContactPage />} />
           
           {/* Optionnel : Redirection si la route n'existe pas */}
           <Route path="*" element={<HomeRedirect />} />
@@ -69,7 +73,10 @@ function HomeRedirect() {
       <div className="error-content">
         <Icon icon="tabler:error-404" width="100" className="error-icon" />
         <h2>Oups ! Page non trouvée</h2>
-        <p>Il semble que vous vous soyez égaré dans les méandres du code.</p>
+        <p>
+          Il semble que vous vous soyez égaré. <br />
+          Veuillez revenir en lieu sûr
+        </p>
         <Link to="/" className="btn-error">
           <Icon icon="mdi:home" width="20" />
           Retourner à l'accueil

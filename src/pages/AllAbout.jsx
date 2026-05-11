@@ -1,17 +1,13 @@
-import { useEffect } from 'react';
 import { Icon } from '@iconify/react';
 
 function AboutFull() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="about-page-full">
-      <main style={{ paddingTop: '60px' , paddingBottom: '30px'}}>
+      <main>
         <div className="container">
           <header className="en_tete">
-            <h1 className="section-title">Parcours & Informations</h1>
+            <h2 className="section-title">Parcours & Informations</h2>
           </header>
 
           <section className="detail-card">
@@ -65,10 +61,10 @@ function AboutFull() {
             <h2>Mon CV</h2>
             <p>Vous pouvez consulter ou télécharger mon CV pour en savoir plus sur mon parcours et mes compétences.</p>
             <div className="cv-buttons">
-              <a href="/CV_BONNET_Vincent2.pdf" className="btn-cv" target="_blank">
+              <a href="CV_BONNET_Vincent2.pdf" className="btn-cv" target="_blank">
                 <Icon icon="mdi:file-pdf-box" width="24" /> Voir mon CV
               </a>
-              <a href="/CV_BONNET_Vincent2.pdf" className="btn-cv download" download>
+              <a href="CV_BONNET_Vincent2.pdf" className="btn-cv download" download>
                 <Icon icon="mdi:download" width="24" /> Télécharger le CV
               </a>
             </div>
