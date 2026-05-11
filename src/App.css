@@ -529,6 +529,7 @@ main{
 }
 
 .hero-subtitle {
+  padding-top: 20px;
   font-size: 1.4rem;
   opacity: 0.9;
 }
@@ -622,7 +623,7 @@ main{
   /* Hero Banner */
   .hero-banner {
     height: auto; /* On laisse le contenu dicter la hauteur */
-    padding: 40px 20px;
+    padding: 5px 5px;
     margin: 10px 0;
   }
 
@@ -632,6 +633,7 @@ main{
 
   .hero-subtitle {
     font-size: 1.1rem;
+    padding-top: 0;
   }
 
   /* Compétences */
