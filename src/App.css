@@ -6,7 +6,8 @@
 :root {  
   --font-main: 'Inter', system-ui, sans-serif;
 
-  --primary-rgb: 239, 68, 68;    /* Rouge */
+  /*--primary-rgb: 255, 128, 0;    /* orange */
+  --primary-rgb: 239, 68, 68;    /*Rouge*/
   --secondary-rgb: 37, 99, 235;  /* Bleu */
   --primary-color: rgb(var(--primary-rgb));
   --secondary-color: rgb(var(--secondary-rgb));
@@ -17,15 +18,18 @@
   --text-color: #1f2937;
   --text-light: #64748b;
   --border-color: rgba(0, 0, 0, 0.05);
+  --box-shadow:rgba(0,0,0,0.1);
 }
 
 /* --- THÈME SOMBRE --- */
 [data-theme='dark'] {
+  --primary-color: rgba(var(--primary-rgb), 0.85);
   --bg-color: #0f172a;       /* Bleu très foncé / Noir */
   --bg-card: #1e293b;        /* Gris-bleu foncé pour les cartes */
   --text-color: #f1f5f9;     /* Blanc cassé */
   --text-light: #94a3b8;     /* Gris clair */
   --border-color: rgba(255, 255, 255, 0.1);
+  --box-shadow: rgba(255,255,255,0.2);
 }
 
 body {
@@ -38,15 +42,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-} */
 
 main{
   padding-top:0px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
 }
 
 
@@ -135,7 +134,7 @@ main{
   left: 0;
   width: 100%;
   background-color: var(--bg-color);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px var(--box-shadow);
   z-index: 2000; /* Priorité haute */
   display: flex;
   justify-content: center;
@@ -302,7 +301,7 @@ main{
     align-items: center;
     gap: 2.5rem;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: -10px 0 30px var(--box-shadow);
   }
 
   /* Quand le menu est ouvert (via JS toggle class) */
@@ -398,14 +397,14 @@ main{
   display: flex;
   flex-direction: column;
   height: 100%; /* Important pour l'alignement */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px var(--box-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px var(--box-shadow);
   border-color: var(--primary-color);
 }
 
@@ -615,7 +614,7 @@ main{
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgb(var(--primary-rgb)); 
+  background-color: var(--primary-color); 
   color: white;
   border-radius: 20px;
   margin: 20px 0;
@@ -654,7 +653,7 @@ main{
 }
 
 .competence-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px var(--box-shadow);
   border-color: var(--primary-color);
 }
 
@@ -797,14 +796,14 @@ main{
     background: var(--bg-card);
     border-radius: 15px;
     padding: 25px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px var(--box-shadow);
     border: 1px solid #f1f5f9;
     transition: transform 0.3s ease;
 }
 
 .skill-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px var(--box-shadow);
     border-color: var(--primary-color);
 }
 
@@ -941,7 +940,7 @@ main{
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px var(--box-shadow);
   border: 1px solid rgba(var(--primary-rgb), 0.1);
 }
 
@@ -1033,7 +1032,7 @@ main{
   background: var(--bg-card);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px var(--box-shadow);
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
   text-align: center; 
@@ -1041,13 +1040,13 @@ main{
 
 .experience-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px var(--box-shadow);
   border-color: var(--primary-color);
 }
 
 .exp-type {
   display: inline-block;
-  background: #eff6ff;
+  background: var(--bg-color);
   color: var(--primary-color);
   padding: 5px 15px;
   border-radius: 20px;
@@ -1178,7 +1177,7 @@ main{
   background: var(--bg-card);
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px var(--box-shadow);
   border-top: 4px solid var(--primary-color);
 }
 
@@ -1192,7 +1191,7 @@ main{
   padding: 30px;
   border-radius: 12px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px var(--box-shadow);
   text-align: center;
 }
 
@@ -1424,7 +1423,7 @@ main{
   padding: 30px;
   border-radius: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px var(--box-shadow);
 }
 
 .questions-grid {
@@ -1599,7 +1598,7 @@ main{
   background: var(--bg-card);
   padding: 50px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px var(--box-shadow);
   max-width: 500px;
   width: 100%;
 }
@@ -1684,7 +1683,7 @@ main{
   padding: 50px 30px;
   border-radius: 24px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 10px 30px var(--box-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1732,7 +1731,7 @@ main{
 /* --- EFFETS AU SURVOL DE LA CARTE --- */
 .contact-main-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px var(--box-shadow);
   border-color: #e2e8f0; /* Bordure légère au survol de la carte */
 }
 
@@ -1788,9 +1787,9 @@ main{
 
 .mini-link-item:hover {
   background: var(--text-color);
-  color: white;
+  color: var(--bg-color);
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px var(--box-shadow);
 }
 
 /* --- RESPONSIVE --- */
