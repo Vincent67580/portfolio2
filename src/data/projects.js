@@ -7,7 +7,7 @@ export const projects = [
   image: "images/imageProjetPortfolio.png",
   link: "https://vincent67580.github.io/portfolio",
   
-  tech: ["HTML5", "CSS3", "JavaScript"],
+  tech: ["HTML", "CSS", "JavaScript"],
   
   // Bibliothèques et Outils
   details: [
@@ -85,7 +85,7 @@ export const projects = [
   // Chemin vers ton fichier HTML de démo dans le dossier public
   link: "projets/rechercheRestaurant.html", 
   
-  tech: ["JavaScript", "Leaflet", "APIs"],
+  tech: ["HTML", "CSS","JavaScript", "Leaflet", "APIs"],
 
   // Bibliothèques et API
   details: [
@@ -112,13 +112,13 @@ export const projects = [
   image: "images/imagePortfolioReact.png", 
   link: "#", 
   
-  tech: ["React 18", "Vite", "React Router"],
+  tech: ["React", "Vite", "React Router"],
   
   details: [
     { name: "React", icon: "logos:react" },
     { name: "Vite", icon: "logos:vitejs" },
     { name: "React Router", icon: "logos:react-router" },
-    { name: "Iconify", icon: "logos:iconify" },
+    { name: "Iconify", icon: "simple-icons:iconify", color: "#1797DB" },
     { name: "CSS3", icon: "simple-icons:css3", color: "#1572B6" }
   ],
   

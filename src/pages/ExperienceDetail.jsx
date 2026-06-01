@@ -48,13 +48,14 @@ function ExperienceDetail() {
         </div>
 
         {/* MISSIONS DÉTAILLÉES (Boucle dynamique) */}
-        {exp.detailedMissions && exp.detailedMissions.length > 0 && (
+        {exp.detailedMissions && exp.detailedMissions.length > 0 ? (
         <section className="detailed-content">
           <h2>Missions détaillées</h2>
-          {exp.detailedMissions?.map((item, index) => (
+          {exp.detailedMissions.map((item, index) => (
             <div key={index} className="mission-block">
               <h3>{item.title}</h3>
-              <p style={{ 'white-space': 'pre-line' }}>{item.content}</p>
+              {/* Correction au passage : en React on écrit camelCase 'whiteSpace' */}
+              <p style={{ whiteSpace: 'pre-line' }}>{item.content}</p>
               {item.subList && (
                 <ul className="sub-list">
                   {item.subList.map((sub, i) => <li key={i}>{sub}</li>)}
@@ -63,7 +64,14 @@ function ExperienceDetail() {
             </div>
           ))}
         </section>
-        )}
+      ) : (
+        <section className="detailed-content no-data">
+          <h2>Pas de détails</h2>
+          <p className="no-missions-text">
+            Aucune mission détaillée n'est renseignée pour le moment pour cette expérience.
+          </p>
+        </section>
+      )}
       </div>
     </div>
   );
