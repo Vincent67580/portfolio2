@@ -1,5 +1,19 @@
 export const experiences = [
-    {
+  {
+    id: 0,
+    company: "EIE – HAGUENAU",
+    type: "Stage - BAC PRO SN",
+    location: "Haguenau",
+    locationLink: "https://maps.app.goo.gl/Vkv3LLSts4viJfaM7",
+    startDate: "29/11/2021",
+    endDate: "17/12/2021",
+    missions: [
+      "Installation de câbles électrique",
+      "Installation de prise réseau RJ45"
+    ],
+    logo:"https://www.eie67.fr/wp-content/uploads/sites/7791/2019/08/logo.png"
+  },
+  {
     id: 1,
     company: "GILGER",
     type: "Stage - BAC PRO SN",
@@ -18,7 +32,20 @@ export const experiences = [
     type: "Stage - BAC PRO SN",
     location: "Haguenau",
     locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
-    displayDate: "Du 25/09/23 au 20/10/23 et du 05/06/23 au 30/06/23",
+    startDate : "02/01/23",
+    endDate : "27/01/23",
+    missions: [
+      "Maintenance et découverte du parc informatique au sein de l'entreprise"
+    ],
+    logo: "Logo_Trumpf.png"
+  },
+  {
+    id: 3,
+    company: "TRUMPF Machines SARL",
+    type: "Stage - BAC PRO SN",
+    location: "Haguenau",
+    locationLink: "https://maps.app.goo.gl/JtfJ2MSKFyGbX4aH6",
+    displayDate: "Du 05/06/23 au 30/06/23 et du 25/09/23 au 20/10/23",
     missions: [
       "Développement d’une application PowerApps pour la commande de repas par les salariés.",
       "Tests, mise en service et suivi du déploiement dans l’entreprise."
@@ -26,7 +53,7 @@ export const experiences = [
     logo: "Logo_Trumpf.png"
   },
   {
-    id: 3,
+    id: 4,
     company: "TRUMPF Machines SARL",
     type: "Stage - BAC PRO SN",
     location: "Haguenau",
@@ -40,7 +67,7 @@ export const experiences = [
     logo: "Logo_Trumpf.png"
   },
   {
-    id: 4,
+    id: 5,
     company: "TRUMPF Machines SARL",
     type: "Stage - BTS SIO - 1e année",
     location: "Haguenau",
@@ -84,7 +111,7 @@ export const experiences = [
   },
 
   {
-    id: 5,
+    id: 6,
     company: "TRUMPF Machines SARL",
     type: "Stage - BTS SIO - 2e année",
     location: "Haguenau",

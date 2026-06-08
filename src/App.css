@@ -5,7 +5,7 @@
 
 :root {  
   --font-main: 'Inter', system-ui, sans-serif;
-
+  
   /*--primary-rgb: 255, 128, 0;    /* orange */
   --primary-rgb: 239, 68, 68;    /*Rouge*/
   --secondary-rgb: 37, 99, 235;  /* Bleu */
@@ -14,6 +14,7 @@
   --transition-bg : background-color 0.7s ease, color 0.7s ease;
   
 /* Variables qui vont changer */
+  --text-bg : 255,255,255;
   --bg-color: #ffffff;
   --bg-card: #f8fafc;
   --text-color: #1f2937;
@@ -25,9 +26,10 @@
 
 /* --- THÈME SOMBRE --- */
 [data-theme='dark'] {
+  --text-bg : 15,23,42;
   --primary-color: rgba(var(--primary-rgb), 0.85);
   --bg-color: #0f172a;       /* Bleu très foncé / Noir */
-  --bg-card: #1e293b;        /* Gris-bleu foncé pour les cartes */
+  --bg-card: #1e293b;       /* Gris-bleu foncé pour les cartes */
   --text-color: #f1f5f9;     /* Blanc cassé */
   --text-light: #94a3b8;     /* Gris clair */
   --border-color: rgba(255, 255, 255, 0.1);
@@ -35,15 +37,21 @@
   --bg-item: rgba(255,255,255,0.07);
 }
 
+:root{
+  background-color: var(--bg-color);
+}
+
 body {
   margin: 0;
   font-family: var(--font-main);
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   color: var(--text-color);
   padding-top: 80px; 
   overflow-x: hidden; /* Empêche le scroll horizontal parasite */
   transition: var(--transition-bg)
 }
+
+
 
 
 main{
@@ -53,6 +61,7 @@ main{
 
 
 .container {
+  background: transparent;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -1871,4 +1880,9 @@ main{
 @keyframes fadeInGrid {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+footer, .info-perso p, .detail-card, .cv-section{
+  /* background: var(--bg-color); */
+  background: rgb(var(--text-bg),0.60);
 }

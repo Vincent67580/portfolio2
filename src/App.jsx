@@ -4,6 +4,7 @@ import './App.css';
 
 // Import des composants de la page d'accueil
 import Navbar from './components/Navbar';
+import CanvasBackground from './components/CanvasBackground';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -30,6 +31,7 @@ function App() {
     <Router>
       <ScrollToTop />
       
+      <CanvasBackground />
       <Navbar />
 
       <div className="container">
