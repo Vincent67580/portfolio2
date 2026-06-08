@@ -35,7 +35,7 @@ Actuellement diplômé d'un BAC Pro SN et venant de terminer mon cursus de **BTS
 Pour faire tourner le projet sur votre machine, suivez ces étapes :
 
 ### 1. Cloner le projet
-git clone [https://github.com/votre-nom-d-utilisateur/nom-du-repo.git](https://github.com/votre-nom-d-utilisateur/nom-du-repo.git)
+git clone [https://github.com/Vincent67580/portfolio2.git](https://github.com/Vincent67580/portfolio2.git)
 cd nom-du-repo
 
 ### 2. Installer les dépendances
@@ -51,13 +51,13 @@ Le projet sera alors accessible dans votre navigateur à l'adresse locale indiqu
 ## 📁 Structure du Projet (Points clés)
 
 src/
-├── components/          # Composants réutilisables (Navbar, Footer, Hero, About...)
-│   ├── CanvasBackground.jsx  # Arrière-plan de particules dynamiques (HTML5 Canvas)
-│   └── ScrollToTop.jsx       # Reset du scroll lors de la navigation
-├── pages/               # Vues principales du routeur (AllProjects, Veille, AboutFull...)
-├── App.jsx              # Structure globale et configuration des routes
-├── App.css              # Styles globaux et variables de thèmes (Light/Dark)
-└── main.jsx             # Point d'entrée de l'application
+├── components/          # Composants réutilisables (Navbar, Footer, Hero, About...) 
+│   ├── CanvasBackground.jsx  # Arrière-plan de particules dynamiques (HTML5 Canvas) 
+│   └── ScrollToTop.jsx       # Reset du scroll lors de la navigation 
+├── pages/               # Vues principales du routeur (AllProjects, Veille, AboutFull...) 
+├── App.jsx              # Structure globale et configuration des routes 
+├── App.css              # Styles globaux et variables de thèmes (Light/Dark) 
+└── main.jsx             # Point d'entrée de l'application 
 
 ---
 
