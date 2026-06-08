@@ -50,6 +50,7 @@ Le projet sera alors accessible dans votre navigateur à l'adresse locale indiqu
 
 ## 📁 Structure du Projet (Points clés)
 
+```text
 src/
 ├── components/           # Composants réutilisables (Navbar, Footer, Hero, About...)
 │   ├── CanvasBackground.jsx   # Arrière-plan de particules dynamiques (HTML5 Canvas)
@@ -58,7 +59,7 @@ src/
 ├── App.jsx               # Structure globale et configuration des routes
 ├── App.css               # Styles globaux et variables de thèmes (Light/Dark)
 └── main.jsx              # Point d'entrée de l'application
-
+```
 ---
 
 ## ✉️ Me Contacter
