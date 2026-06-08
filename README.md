@@ -51,13 +51,15 @@ Le projet sera alors accessible dans votre navigateur à l'adresse locale indiqu
 ## 📁 Structure du Projet (Points clés)
 
 src/
-├── components/          # Composants réutilisables (Navbar, Footer, Hero, About...) 
-│   ├── CanvasBackground.jsx  # Arrière-plan de particules dynamiques (HTML5 Canvas) 
-│   └── ScrollToTop.jsx       # Reset du scroll lors de la navigation 
-├── pages/               # Vues principales du routeur (AllProjects, Veille, AboutFull...) 
-├── App.jsx              # Structure globale et configuration des routes 
-├── App.css              # Styles globaux et variables de thèmes (Light/Dark) 
-└── main.jsx             # Point d'entrée de l'application 
+├── components/           # Composants réutilisables (Navbar, Footer, Hero, About...)
+
+│   ├── CanvasBackground.jsx   # Arrière-plan de particules dynamiques (HTML5 Canvas)
+
+│   └── ScrollToTop.jsx        # Reset du scroll lors de la navigation
+├── pages/                # Vues principales du routeur (AllProjects, Veille, AboutFull...)
+├── App.jsx               # Structure globale et configuration des routes
+├── App.css               # Styles globaux et variables de thèmes (Light/Dark)
+└── main.jsx              # Point d'entrée de l'application
 
 ---
 
