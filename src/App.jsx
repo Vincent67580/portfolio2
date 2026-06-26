@@ -23,6 +23,7 @@ import AllAbout from './pages/AllAbout';
 import SkillsDetail from './pages/SkillsDetail';
 import Veille from './pages/Veille';
 import ContactPage from './pages/ContactPage';
+import ProjectDetail from './pages/ProjectDetail';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
           <Route path="/about" element={<AllAbout />} />
           <Route path="/skills" element={<SkillsDetail />} />
           <Route path="/projets" element={<AllProjects />} />
+          <Route path="/projet/:id" element={<ProjectDetail />} />
           <Route path="/experiences" element={<AllExperiences />} />
           <Route path="/veille" element={<Veille />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
@@ -68,7 +70,7 @@ function App() {
   );
 }
 
-// Petit composant utilitaire pour rediriger les erreurs 404 vers l'accueil
+// composant utilitaire pour rediriger les erreurs 404 vers l'accueil
 function HomeRedirect() {
   return (
     <div className="error-container">

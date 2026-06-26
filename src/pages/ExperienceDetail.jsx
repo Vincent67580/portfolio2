@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { experiences } from '../data/experiences';
 import { Icon } from '@iconify/react';
 import { useEffect } from 'react';
@@ -7,6 +7,8 @@ function ExperienceDetail() {
   const { id } = useParams();
   const exp = experiences.find(e => e.id === parseInt(id));
 
+  const navigate = useNavigate();
+
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   if (!exp) return <div className="container">Stage non trouvé</div>;
@@ -14,9 +16,9 @@ function ExperienceDetail() {
   return (
     <div className="detail-page-wrapper">
       <div className="container">
-        <Link to="/experiences" className="btn-back">
+        <button onClick={() => navigate(-1)} className="btn-back" style={{ cursor: 'pointer', border: 'none' }}>
            Retour aux stages
-        </Link>
+        </button>
 
         <header className="detail-header">
           <h1>{exp.company}</h1>

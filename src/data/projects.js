@@ -110,7 +110,7 @@ export const projects = [
   title: "Portfolio personnel",
   description: "Conception et développement d'une application web moderne avec React.js. Architecture basée sur des composants réutilisables, gestion du routage dynamique et déploiement automatisé via GitHub Actions.",
   image: "images/imagePortfolioReact.png", 
-  link: "#", 
+  link: "https://vincent67580.github.io/portfolio2", 
   
   tech: ["React", "Vite", "React Router"],
   

@@ -1,6 +1,8 @@
+// src/components/ProjectCard.jsx
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 
-function ProjectCard({ title, description,  image, link, downloadLink, details, features }) {
+function ProjectCard({id, title, description,  image, link, downloadLink, details, features }) {
   return (
     <div className="project-card">
       {/* Image avec lien si disponible */}
@@ -17,7 +19,7 @@ function ProjectCard({ title, description,  image, link, downloadLink, details, 
         {/* Affichage des Technologies avec icônes (si details existe) */}
         {details && (
           <div className="tech-icons-container">
-            <h4>Technologies :</h4>
+            <h4>Technologies :</h4> 
             <div className="tech-icons-grid">
               {details.map((item, index) => (
                 <div key={index} className="tech-icon-item" title={item.name}>
@@ -46,14 +48,30 @@ function ProjectCard({ title, description,  image, link, downloadLink, details, 
 
         {/* Boutons d'action */}
         <div className="project-actions">
-          {link && (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="btn-action primary">
-              <Icon icon="mdi:eye" width="18" /> Voir
+          {/* Bouton Détails qui reste inchangé */}
+          <Link to={`/projet/${id}`} className="btn-action primary">
+            <Icon icon="mdi:information-outline" width="18" /> Détails
+          </Link>
+
+          {/* Bouton Démo / Script dynamique */}
+          {link && link !== "#" && (
+            <a href={link} target="_blank" rel="noopener noreferrer" className="btn-action secondary">
+              {link.endsWith('.txt') ? (
+                <>
+                  <Icon icon="mdi:code-tags" width="18" /> Code
+                </>
+              ) : (
+                <>
+                  <Icon icon="mdi:eye" width="18" /> Démo
+                </>
+              )}
             </a>
           )}
+          
+          {/* Bouton de Téléchargement */}
           {downloadLink && (
             <a href={downloadLink} download className="btn-action secondary">
-              <Icon icon="mdi:download" width="18" /> Télécharger
+              <Icon icon="mdi:download" width="18" /> .ZIP
             </a>
           )}
         </div>

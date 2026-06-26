@@ -1,3 +1,4 @@
+// src/components/Projects.jsx
 import { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { projects } from '../data/projects';
@@ -10,7 +11,6 @@ function Projects({ limit }) {
   if (!projects) return null;
 
   // 2. Définir les catégories disponibles (statiques ou extraites de tes datas)
-  // On prend les technos principales qui reviennent souvent
   const categories = ['Tous','HTML', 'React', 'Python', 'JavaScript', 'API'];
 
   // 3. Logique de tri et de filtrage
