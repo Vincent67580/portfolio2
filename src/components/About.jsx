@@ -7,7 +7,7 @@ function About() {
       <div className="info-perso">
         <h2 className="section-title">À propos de moi</h2>
         <p>
-          Je m’appelle <strong>Vincent Bonnet</strong>. Je viens de terminer mon cursus de <strong>BTS SIO</strong> option <strong>SLAM</strong> à Strasbourg et je suis actuellement dans l'attente des résultats des examens.
+          Je m’appelle <strong>Vincent Bonnet</strong>. Je suis fraîchement <strong>diplômé du BTS SIO</strong> option <strong>SLAM</strong> à Strasbourg.
         </p>
         <p>
           Déterminé à poursuivre mon parcours, je suis activement à la recherche d'une <strong>alternance</strong> afin d'intégrer le <strong>Bachelor CDA (Concepteur Développeur d’Applications)</strong> au <strong>CCI Campus Strasbourg</strong> pour l'année 2026-2027.

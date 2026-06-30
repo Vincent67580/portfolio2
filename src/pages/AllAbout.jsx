@@ -14,7 +14,7 @@ function AboutFull() {
           <section className="detail-card">
             <h2>Informations personnelles</h2>
             <p>
-              Je m’appelle <strong>Vincent Bonnet</strong>. Je viens de terminer mon cursus de <strong>BTS SIO</strong> (Services Informatiques aux Organisations), option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers) au lycée René Cassin à Strasbourg, et je suis actuellement dans l'attente des résultats des examens.  
+              Je m’appelle <strong>Vincent Bonnet</strong>. Je suis récemment <strong>diplômé du BTS SIO</strong> (Services Informatiques aux Organisations), option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers) au lycée René Cassin à Strasbourg.  
               Passionné par le <em>développement web</em> et la <em>programmation</em>, j’aime créer des solutions logicielles utiles, modernes et efficaces.
             </p>
           </section>
