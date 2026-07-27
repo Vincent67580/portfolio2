@@ -62,17 +62,10 @@ function AboutFull() {
             <h2>Mon CV</h2>
             <p>Vous pouvez consulter ou télécharger mon CV pour en savoir plus sur mon parcours et mes compétences.</p>
             <div className="cv-buttons">
-<<<<<<< HEAD
               <a href="CV_BONNET_Vincent.pdf" className="btn-cv" target="_blank" rel="noreferrer">
                 <Icon icon="mdi:file-pdf-box" width="24" /> Voir mon CV
               </a>
               <a href="CV_BONNET_Vincent.pdf" className="btn-cv download" download>
-=======
-              <a href="CV-BONNET-Vincent.pdf" className="btn-cv" target="_blank" rel="noreferrer">
-                <Icon icon="mdi:file-pdf-box" width="24" /> Voir mon CV
-              </a>
-              <a href="CV-BONNET-Vincent.pdf" className="btn-cv download" download>
->>>>>>> acdb6f70789273c62057eec77cddc1c337fe5ce2
                 <Icon icon="mdi:download" width="24" /> Télécharger le CV
               </a>
             </div>
