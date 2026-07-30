@@ -57,15 +57,16 @@ function AboutFull() {
               J’aime aussi le sport, les jeux vidéo et la musique, qui me permettent de garder un bon équilibre au quotidien.
             </p>
           </section>
+          <br />
 
           <section className="cv-section">
             <h2>Mon CV</h2>
             <p>Vous pouvez consulter ou télécharger mon CV pour en savoir plus sur mon parcours et mes compétences.</p>
             <div className="cv-buttons">
-              <a href="CV_BONNET_Vincent.pdf" className="btn-cv" target="_blank" rel="noreferrer">
+              <a href="documents/2026_CV_BONNET-Vincent.pdf" className="btn-cv" target="_blank" rel="noreferrer">
                 <Icon icon="mdi:file-pdf-box" width="24" /> Voir mon CV
               </a>
-              <a href="CV_BONNET_Vincent.pdf" className="btn-cv download" download>
+              <a href="documents/2026_CV_BONNET-Vincent.pdf" className="btn-cv download" download>
                 <Icon icon="mdi:download" width="24" /> Télécharger le CV
               </a>
             </div>

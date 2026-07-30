@@ -128,5 +128,32 @@ export const projects = [
     { label: "Design Antéchronologique", icon: "mdi:sort-variant", color: "#4CAF50" },
     { label: "Optimisation Vite.js", icon: "mdi:lightning-bolt", color: "#FFD600" }
   ]
+},
+{
+  id: 6,
+  title: "Dashboard Météo React",
+  description: "Tableau de bord météo moderne sous React.js proposant des prévisions en temps réel et sur 7 jours. Intègre géolocalisation, gestion des favoris via localStorage, thèmes dynamiques jour/nuit et alertes météo avec l'API Open-Meteo.",
+  image: "images/imageProjetMeteo.png",
+  link: "https://vincent67580.github.io/Meteo/",
+  
+  tech: ["React", "Vite", "JavaScript", "API", "CSS"],
+
+  // Bibliothèques, outils et API exacts
+  details: [
+    { name: "React", icon: "logos:react" },
+    { name: "Vite", icon: "logos:vitejs" },
+    { name: "JavaScript", icon: "logos:javascript" },
+    { name: "Open-Meteo API", icon: "carbon:weather-front-cold", color: "#60A5FA" },
+    { name: "Lucide Icons", icon: "simple-icons:lucide", color: "#F43F5E" },
+    { name: "CSS Modules", icon: "simple-icons:css3", color: "#1572B6" }
+  ],
+
+  // Fonctionnalités clés extraites de ton README
+  features: [
+    { label: "Autocomplétion & Géolocalisation", icon: "mdi:crosshairs-gps", color: "#3B82F6" },
+    { label: "Favoris (localStorage)", icon: "mdi:star", color: "#EAB308" },
+    { label: "Prévisions horaires & 7 jours", icon: "mdi:calendar-clock", color: "#10B981" },
+    { label: "Alertes météo & Thèmes jour/nuit", icon: "mdi:theme-light-dark", color: "#8B5CF6" }
+  ]
 }
 ];
