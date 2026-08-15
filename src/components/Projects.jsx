@@ -10,7 +10,7 @@ function Projects({ limit }) {
 
   if (!projects) return null;
 
-  // 2. Définir les catégories disponibles (statiques ou extraites de tes datas)
+  // 2. Définir les catégories disponibles 
   const categories = ['Tous','HTML', 'React', 'Python', 'JavaScript', 'API'];
 
   // 3. Logique de tri et de filtrage

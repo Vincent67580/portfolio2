@@ -873,6 +873,63 @@ main{
   opacity: 0.9;
 }
 
+/* Badge de disponibilité */
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Badge de disponibilité sur fond clair */
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--bg-color);
+  border: 1.5px solid #10b981;
+  color: #065f46;               
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  background-color: #10b981;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.33);
+    opacity: 0.8;
+  }
+  80%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+
+
 /* --- SECTION ABOUT --- */
 .about-section {
   margin: 0px 20px 30px 20px;
@@ -915,6 +972,125 @@ main{
   font-size: 1.1rem;
   margin: 0;
 }
+
+
+/* ==========================================================================
+   FRISE CHRONOLOGIQUE (TIMELINE)
+   ========================================================================== */
+
+.timeline-section {
+  margin: 3rem 0;
+}
+
+.timeline-container {
+  position: relative;
+  padding-left: 35px;
+  margin-top: 2rem;
+}
+
+/* Ligne verticale de la frise */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 5px;
+  bottom: 5px;
+  width: 3px;
+  background: rgba(220, 38, 38, 0.2); /* Rouge discret accordé à ton thème */
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Pastille/Icone */
+.timeline-icon {
+  position: absolute;
+  left: -35px;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  z-index: 1;
+}
+
+/* Style de l'objectif Bachelor CDA (Mise en valeur) */
+.timeline-item.target .timeline-icon {
+  border-color: #e11d48;
+  background: #e11d48;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(225, 29, 72, 0.4);
+}
+
+/* Carte de contenu */
+.timeline-content {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.timeline-year {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e11d48;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+  color: #111827;
+}
+
+.timeline-location {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.6rem;
+}
+
+.timeline-content p {
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: #374151;
+  margin: 0;
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+  .timeline-container {
+    padding-left: 22px;
+  }
+  .timeline-container::before {
+    left: 8px;
+  }
+  .timeline-icon {
+    left: -22px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
 
 /* --- BOUTONS CV --- */
 .cv-buttons {
