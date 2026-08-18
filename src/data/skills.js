@@ -19,52 +19,56 @@ export const skills = [
         id: "prog",
         title: "Programmation", 
         icon: "eos-icons:rotating-gear", 
-        desc: "Python, JavaScript, Java",
-        detailText: `En programmation, j’utilise régulièrement Python, Java et JavaScript. 
-        Je conçois des programmes orientés objet (POO), en mettant l’accent sur les structures de données et les algorithmes. 
-        J’ai également de l’expérience en automatisation de tâches.`,
+        desc: "Python, Java, JavaScript, VBA",
+        detailText: `En programmation, j’utilise régulièrement Python, Java, JavaScript et VBA. Je conçois des programmes orientés objet (POO), en mettant l’accent sur les structures de données et les algorithmes. J’ai également une solide expérience en automatisation de tâches applicatives et scripts.`,
         technos: [
             { name: "Python", icon: "logos:python" },
             { name: "Java", icon: "logos:java" },
-            { name: "JavaScript", icon: "logos:javascript" }
+            { name: "JavaScript", icon: "logos:javascript" },
+            { name: "VBA Excel", icon: "simple-icons:microsoftexcel", color: "#107C41" }
         ]
     },
     { 
         id: "db",
-        title: "Bases de données", 
+        title: "Bases de données & Conception", 
         icon: "devicon:azuresqldatabase", 
-        desc: "SQL, PhpMyAdmin, SQLite",
-        detailText: `Je sais concevoir et manipuler des bases de données relationnelles à l’aide du langage SQL : création de tables, écriture de requêtes complexes (JOIN, GROUP BY, etc.) et optimisation de performances.`,
+        desc: "SQL, Merise/UML, PhpMyAdmin, SQLite",
+        detailText: `Je sais concevoir, modéliser (Merise, UML, MCD/MLD) et manipuler des bases de données relationnelles à l’aide du langage SQL : création de tables, écriture de requêtes complexes (JOIN, GROUP BY) et optimisation de performances.`,
         technos: [
             { name: "MySQL", icon: "logos:mysql-icon" },
             { name: "SQLite", icon: "vscode-icons:file-type-sqlite" },
-            { name: "PhpMyAdmin", icon: "simple-icons:phpmyadmin" }
+            { name: "PhpMyAdmin", icon: "simple-icons:phpmyadmin" },
+            { name: "Merise / UML", icon: "mdi:sitemap", color: "#3b82f6" }
         ]
     },
     { 
         id: "apps",
-        title: "Développement d’applications", 
+        title: "Applications & Low-Code", 
         icon: "basil:apps-solid", 
-        desc: "PowerApps, WinDev",
-        detailText: `J’ai participé à la création d’applications à l’aide d’environnements tels que WinDev et PowerApps. Cela inclut la conception d’interfaces utilisateur et l’intégration de bases de données.`,
+        desc: "PowerApps, Power Automate, Power BI, WinDev",
+        detailText: `Conception d'applications métiers et automatisation de flux de travail. J'utilise la suite Microsoft Power Platform (PowerApps, Power Automate, Power BI) et des environnements comme WinDev pour développer rapidement des solutions interconnectées et efficaces.`,
         technos: [
             { name: "WinDev", icon: "mdi:application", color: "#FFD000" },
-            { name: "PowerApps", icon: "simple-icons:powerapps", color: "#742774" }
+            { name: "PowerApps", icon: "simple-icons:powerapps", color: "#742774" },
+            { name: "Power Automate", icon: "simple-icons:powerautomate", color: "#0078D4" },
+            { name: "Power BI", icon: "simple-icons:powerbi", color: "#F2C811" }
         ]
     },
     { 
         id: "tools",
         title: "Outils & Méthodes", 
         icon: "noto:puzzle-piece", 
-        desc: "Git, VS Code, GitHub, IA",
-        detailText: `J’utilise des outils de développement comme Git, GitHub et Visual Studio Code. Je travaille principalement sous Windows, avec quelques notions sur Linux.`,
+        desc: "Git, GitHub, API REST, Trello, IA",
+        detailText: `J’utilise des outils de développement et de gestion de projet agile comme Git, GitHub, Trello et VS Code. Je maîtrise l'intégration d'API REST et je travaille principalement sous Windows, avec des notions sur Linux.`,
         technos: [
             { name: "Git", icon: "logos:git-icon" },
             { name: "GitHub", icon: "mdi:github" },
             { name: "VS Code", icon: "vscode-icons:file-type-vscode" },
             { name: "Windows", icon: "mdi:microsoft-windows", color: "#0078D6" },
             { name: "Linux", icon: "logos:linux-tux" },
-            { name: "IA", icon: "lucide:bot", color: "#FF4400" }
+            { name: "IA", icon: "lucide:bot", color: "#FF4400" },
+            { name: "API REST", icon: "carbon:api", color: "#007acc" },
+            { name: "Trello", icon: "logos:trello" }
         ]
     },
     { 
@@ -72,7 +76,7 @@ export const skills = [
         title: "Autres compétences", 
         icon: "noto:books", 
         desc: "Bureautique, Langues",
-        detailText: `Je possède de bonnes connaissances en bureautique et je parle français (langue maternelle), anglais et allemand (notions).`,
+        detailText: `Je possède de bonnes connaissances en bureautique avancée (automatisation Excel/VBA) et je parle français (langue maternelle), anglais et allemand (notions).`,
         technos: [
             { name: "Word", icon: "vscode-icons:file-type-word" },
             { name: "Excel", icon: "vscode-icons:file-type-excel" },
