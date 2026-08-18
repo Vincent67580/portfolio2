@@ -888,7 +888,7 @@ main{
   gap: 10px;
   background-color: var(--bg-color);
   border: 1.5px solid #10b981;
-  color: #065f46;               
+  color: #0fa47a;               
   padding: 8px 18px;
   border-radius: 25px;
   font-size: 0.9rem;
@@ -996,7 +996,7 @@ main{
   top: 5px;
   bottom: 5px;
   width: 3px;
-  background: rgba(220, 38, 38, 0.2); /* Rouge discret accordé à ton thème */
+  background: rgba(var(--primary-rgb), 0.6); /* Rouge discret accordé à ton thème */
 }
 
 .timeline-item {
@@ -1016,63 +1016,64 @@ main{
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--bg-color);
   border: 2px solid #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #444;
+  color: var(--text-light);
   z-index: 1;
 }
 
 /* Style de l'objectif Bachelor CDA (Mise en valeur) */
 .timeline-item.target .timeline-icon {
-  border-color: #e11d48;
-  background: #e11d48;
-  color: #ffffff;
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: var(--bg-color);
   box-shadow: 0 0 10px rgba(225, 29, 72, 0.4);
 }
 
 /* Carte de contenu */
 .timeline-content {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 12px var(--box-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .timeline-content:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px var(--box-shadow);
+  border-color: var(--primary-color);
 }
 
 .timeline-year {
   display: inline-block;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #e11d48;
+  color: var(--primary-color);
   margin-bottom: 0.3rem;
 }
 
 .timeline-content h3 {
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
-  color: #111827;
+  color: var(--text-color);
 }
 
 .timeline-location {
   font-size: 0.88rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--text-light);
   margin-bottom: 0.6rem;
 }
 
 .timeline-content p {
   font-size: 0.93rem;
   line-height: 1.5;
-  color: #374151;
+  color: var(--text-light);
   margin: 0;
 }
 
