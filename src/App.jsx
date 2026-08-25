@@ -44,7 +44,7 @@ function App() {
               <About />
               <Skills />
               <Projects limit={2} />
-              <Experiences limit={2} />
+              <Experiences limit={3} />
               <VeilleTeaser />
               <Contact /> 
             </main>

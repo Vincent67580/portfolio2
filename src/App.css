@@ -1441,26 +1441,238 @@ main{
   margin: 0 auto;
 }
 
-.experience-list-container {
+/* ==========================================================================
+   AFFICHAGE EXPÉRIENCES PAR ONGLETS (TABS LAYOUT)
+   ========================================================================== */
+
+.experiences-tabs-wrapper {
+  display: flex;
+  gap: 25px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px var(--box-shadow);
+  padding: 20px;
+  margin-top: 20px;
+
+  /* On fixe une hauteur maximale basée sur l'écran de l'ordinateur */
+  height: 75vh;
+  min-height: 480px;
+  max-height: 620px;
+  box-sizing: border-box;
+}
+
+/* Sidebar d'onglets à gauche */
+.tabs-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
+  width: 320px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-color);
+  padding-right: 15px;
+
+  /* Scroll interne si la liste d'onglets dépasse */
+  overflow-y: auto;
 }
 
-.experience-card {
-  background: var(--bg-card);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px var(--box-shadow);
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--bg-color);
   border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-  text-align: center; 
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  border-left: 4px solid transparent;
 }
 
-.experience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px var(--box-shadow);
+.tab-item:hover {
   border-color: var(--primary-color);
+  transform: translateX(3px);
+}
+
+.tab-item.active {
+  background: var(--bg-card);
+  border-left-color: var(--primary-color);
+  box-shadow: 0 2px 10px var(--box-shadow);
+}
+
+.tab-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.tab-company {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.tab-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.tab-date {
+  font-size: 0.8rem;
+  color: var(--text-light, #64748b);
+}
+
+/* Panneau de contenu principal à droite */
+.tab-content-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px 10px 15px;
+  animation: fadeInTab 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Scroll interne si la description ou les missions dépassent */
+  overflow-y: auto;
+}
+
+/* Style épuré pour les barres de défilement (Scrollbar) --- */
+.tabs-sidebar::-webkit-scrollbar,
+.tab-content-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tabs-sidebar::-webkit-scrollbar-track,
+.tab-content-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabs-sidebar::-webkit-scrollbar-thumb,
+.tab-content-panel::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary-rgb), 0.25);
+  border-radius: 10px;
+}
+
+.tabs-sidebar::-webkit-scrollbar-thumb:hover,
+.tab-content-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+@keyframes fadeInTab {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.tab-panel-header h3 {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin: 8px 0 0 0;
+}
+
+.exp-type-badge {
+  display: inline-block;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.tab-company-logo {
+  max-height: 45px;
+  max-width: 110px;
+  object-fit: contain;
+  background-color: whitesmoke;
+  padding: 1px;
+}
+
+.exp-date-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+}
+
+.exp-missions-wrapper{
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.exp-missions-wrapper h4 {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+/* Adaptation de tes puces existantes */
+.tab-content-panel .missions-list {
+  margin: 0 0 20px 0;
+  max-width: 100%;
+}
+
+/* --- RESPONSIVE MOBILE ET TABLETTE --- */
+@media (max-width: 850px) {
+  .experiences-tabs-wrapper {
+    /* Sur mobile/tablette, on remet une hauteur automatique */
+    height: auto;
+    min-height: initial;
+    max-height: initial;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .tabs-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-right: 0;
+    padding-bottom: 10px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .tab-item {
+    min-width: 200px;
+    border-left: 1px solid var(--border-color);
+    border-bottom: 4px solid transparent;
+  }
+
+  .tab-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .tab-item.active {
+    border-left-color: var(--border-color);
+    border-bottom-color: var(--primary-color);
+  }
+
+  .tab-content-panel {
+    overflow-y: visible;
+    padding: 15px 5px 5px 5px;
+  }
 }
 
 .exp-type {
