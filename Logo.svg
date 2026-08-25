@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Dégradé du fond sombre -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Dégradé rouge dynamique sur les crochets -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+
+    <!-- Ombre portée pour l'effet Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#e11d48" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Fond carré aux coins arrondis -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGradient)" />
+
+  <!-- Bordure fine sub-lumineuse -->
+  <rect x="6" y="6" width="500" height="500" rx="109" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="6" />
+
+  <!-- Groupe Monogramme VB + Balises Code (Centré) -->
+  <g filter="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Crochet gauche < -->
+    <path d="M 100 190 L 50 256 L 100 322" fill="none" stroke="url(#accentGradient)" stroke-width="26" />
+
+    <!-- Lettre V -->
+    <path d="M 145 190 L 205 322 L 265 190" fill="none" stroke="#ffffff" stroke-width="26" />
+
+    <!-- Lettre B -->
+    <path d="M 295 190 L 350 190 C 382 190, 382 248, 350 248 L 295 248 L 355 248 C 390 248, 390 322, 355 322 L 295 322 L 295 190" fill="none" stroke="#ffffff" stroke-width="26" />
+
+    <!-- Crochet droit > -->
+    <path d="M 412 190 L 462 256 L 412 322" fill="none" stroke="url(#accentGradient)" stroke-width="26" />
+  </g>
+
+  <!-- Point néon (Curseur terminal / Prompt) -->
+  <circle cx="435" cy="335" r="12" fill="#f43f5e" />
+</svg>
