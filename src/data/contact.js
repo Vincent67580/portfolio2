@@ -1,3 +1,4 @@
+// /data/contact.js
 export const contactLinks = [
   {
     id: 1,

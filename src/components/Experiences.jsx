@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 function Experiences({ limit }) {
   if (!experiences) return null;
 
-  // Tri par ID décroissant (du plus récent au plus ancien)
   const sortedExperiences = [...experiences].sort((a, b) => b.id - a.id);
   const displayedExperiences = limit ? sortedExperiences.slice(0, limit) : sortedExperiences;
 
   const [activeTab, setActiveTab] = useState(0);
+  // État pour ouvrir/fermer le volet de gauche
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const currentExp = displayedExperiences[activeTab] || displayedExperiences[0];
 
   return (
@@ -19,27 +21,39 @@ function Experiences({ limit }) {
         {limit ? "Expériences récentes" : "Parcours professionnel"}
       </h2>
 
-      <div className="experiences-tabs-wrapper">
-        {/* Sidebar des onglets / cartes rétractées */}
-        <div className="tabs-sidebar">
-          {displayedExperiences.map((exp, index) => (
-            <button
-              key={exp.id}
-              className={`tab-item ${index === activeTab ? 'active' : ''}`}
-              onClick={() => setActiveTab(index)}
-            >
-              <div className="tab-item-header">
-                <span className="tab-company">{exp.company}</span>
-                <span className="tab-type">{exp.type}</span>
-              </div>
-              <span className="tab-date">
-                {exp.displayDate ? "Dates multiples" : `${exp.startDate} - ${exp.endDate}`}
-              </span>
-            </button>
-          ))}
-        </div>
+      <div className={`experiences-tabs-wrapper ${!isSidebarOpen ? 'sidebar-closed' : ''}`}>
+        
+        {/* Bouton pour ouvrir/fermer la sidebar */}
+        <button 
+          className="toggle-sidebar-btn-large" 
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          title={isSidebarOpen ? "Fermer le volet" : "Ouvrir le volet"}
+        >
+          <Icon icon={isSidebarOpen ? "mdi:chevron-left" : "mdi:chevron-right"} />
+        </button>
 
-        {/* Panneau de détail de l'expérience sélectionnée */}
+        {/* Sidebar des onglets */}
+        {isSidebarOpen && (
+          <div className="tabs-sidebar">
+            {displayedExperiences.map((exp, index) => (
+              <button
+                key={exp.id}
+                className={`tab-item ${index === activeTab ? 'active' : ''}`}
+                onClick={() => setActiveTab(index)}
+              >
+                <div className="tab-item-header">
+                  <span className="tab-company">{exp.company}</span>
+                  <span className="tab-type">{exp.type}</span>
+                </div>
+                <span className="tab-date">
+                  {exp.displayDate ? "Dates multiples" : `${exp.startDate} - ${exp.endDate}`}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Panneau de contenu principal */}
         <div className="tab-content-panel">
           <div className="tab-panel-header">
             <div>

@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@iconify/react": "^6.0.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

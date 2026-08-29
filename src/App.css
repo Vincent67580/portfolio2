@@ -22,6 +22,8 @@
   --border-color: rgba(0, 0, 0, 0.05);
   --box-shadow:rgba(0,0,0,0.2);
   --bg-item:rgba(0, 0, 0, 0.07);
+  --succes-color : #077a31;
+  --error-color : #9b0c0c;
 }
 
 /* --- THÈME SOMBRE --- */
@@ -35,6 +37,8 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --box-shadow: rgba(255,255,255,0.35);
   --bg-item: rgba(255,255,255,0.07);
+  --succes-color : #2de872;
+  --error-color : #f87171;
 }
 
 :root{
@@ -1324,111 +1328,6 @@ main{
 }
 
 
-/* ==========================================================================
-   PARTIE 7 : CONTACT  + RESPONSIVE
-   ========================================================================== */
-
-/* --- SECTION CONTACT --- */
-.contact-section {
-  padding: 0px 20px 30px;
-  text-align: center;
-}
-
-.contact-subtitle {
-  color: var(--text-color);
-  margin-bottom: 50px;
-  font-size: 1.1rem;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.contact-card {
-  background: var(--bg-card);
-  padding: 40px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  box-shadow: 0 10px 30px var(--box-shadow);
-  border: 1px solid rgba(var(--primary-rgb), 0.1);
-}
-
-.icon-wrapper {
-  background: rgba(var(--primary-rgb), 0.05);
-  padding: 20px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-card span {
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.contact-card small {
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
-/* Effets au survol */
-.contact-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.15);
-  border-color: var(--primary-color);
-}
-
-.contact-card:hover .icon-wrapper {
-  transform: scale(1.1);
-  background: rgba(var(--primary-rgb), 0.1);
-}
-
-/* Couleurs spécifiques */
-.contact-card.linkedin:hover { color: #0077b5; }
-.contact-card.github:hover { color: #333; }
-.contact-card.email:hover { color: var(--primary-color); }
-
-
-
-/* ==========================================================================
-   MOBILE & TABLETTE (Responsive Partie 7)
-   ========================================================================== */
-
-@media (max-width: 768px) {
-  .contact-subtitle {
-    font-size: 1rem;
-    margin-bottom: 30px;
-    padding: 0 10px;
-  }
-
-  .contact-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-  }
-
-  .contact-card {
-    padding: 30px 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-section {
-    padding: 0 0px 40px; /* On réduit juste un peu l'espace autour de la section */
-  }
-}
-
 
 /* ==========================================================================
    PARTIE 5 : EXPÉRIENCES & DÉTAILS STAGE + RESPONSIVE
@@ -1460,6 +1359,9 @@ main{
   min-height: 480px;
   max-height: 620px;
   box-sizing: border-box;
+
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 /* Sidebar d'onglets à gauche */
@@ -1525,6 +1427,52 @@ main{
 .tab-date {
   font-size: 0.8rem;
   color: var(--text-light, #64748b);
+}
+
+/* Bouton XL pour la fermeture/ouverture */
+.toggle-sidebar-btn-large {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--bg-color, #1e293b);
+  border: 2px solid var(--primary-color, #f43f5e);
+  color: var(--primary-color, #f43f5e);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet au survol */
+.toggle-sidebar-btn-large:hover {
+  background: var(--primary-color, #f43f5e);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+}
+
+/* Ajustement de la marge supérieure du volet pour ne pas chevaucher le grand bouton */
+.experiences-tabs-wrapper:not(.sidebar-closed) .tabs-sidebar {
+  margin-top: 36px;
+}
+
+/* Ajustement quand le volet est fermé */
+.experiences-tabs-wrapper.sidebar-closed {
+  grid-template-columns: 1fr;
+  padding-top: 36px;
+}
+/* Masquer le bouton sur mobile pour éviter les conflits de mise en page */
+@media (max-width: 850px) {
+  .toggle-sidebar-btn-large {
+    display: none;
+  }
 }
 
 /* Panneau de contenu principal à droite */
@@ -2279,6 +2227,110 @@ main{
 
 
 
+/* ==========================================================================
+   PARTIE 7 : CONTACT  + RESPONSIVE
+   ========================================================================== */
+
+/* --- SECTION CONTACT --- */
+.contact-section {
+  padding: 0px 20px 30px;
+  text-align: center;
+}
+
+.contact-subtitle {
+  color: var(--text-color);
+  margin-bottom: 50px;
+  font-size: 1.1rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  padding: 40px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 10px 30px var(--box-shadow);
+  border: 1px solid rgba(var(--primary-rgb), 0.1);
+}
+
+.icon-wrapper {
+  background: rgba(var(--primary-rgb), 0.05);
+  padding: 20px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-card span {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.contact-card small {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Effets au survol */
+.contact-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.15);
+  border-color: var(--primary-color);
+}
+
+.contact-card:hover .icon-wrapper {
+  transform: scale(1.1);
+  background: rgba(var(--primary-rgb), 0.1);
+}
+
+/* Couleurs spécifiques */
+.contact-card.linkedin:hover { color: #0077b5; }
+.contact-card.github:hover { color: #333; }
+.contact-card.email:hover { color: var(--primary-color); }
+
+
+
+/* ==========================================================================
+   MOBILE & TABLETTE (Responsive Partie 7)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 0 0px 40px; /* On réduit juste un peu l'espace autour de la section */
+  }
+}
 
 
 
@@ -2437,6 +2489,83 @@ main{
 }
 
 
+/* --- FORMULAIRE D'ENVOI DIRECT DANS LA CARTE --- */
+.contact-main-card.form-card {
+  align-items: stretch;
+  text-align: left;
+}
+
+.contact-main-card.form-card .icon-circle,
+.contact-main-card.form-card h3,
+.contact-main-card.form-card p {
+  align-self: center;
+  text-align: center;
+}
+
+.direct-email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.form-input-group input,
+.form-input-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--bg-color, #0f172a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color, #ffffff);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input-group input:focus,
+.form-input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.2);
+}
+
+.btn-submit {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Retours visuels (succès / erreur) */
+.form-feedback {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.form-feedback.success {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--succes-color);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-feedback.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--error-color);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
 
 
 

@@ -1,3 +1,4 @@
+// /components/Contact.jsx
 import { Icon } from '@iconify/react';
 import { contactLinks } from '../data/contact'; 
 
