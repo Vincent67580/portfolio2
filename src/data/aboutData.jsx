@@ -18,9 +18,9 @@ export const aboutSections = [
     className: "detail-card objective-card",
     content: (
       <p>
-        Déterminé à poursuivre et approfondir mes compétences, je recherche activement une <strong>alternance</strong> 
+        Déterminé à poursuivre et approfondir mes compétences, je recherche activement une <strong>alternance </strong> 
         pour intégrer le <strong>Bachelor CDA (Concepteur Développeur d’Applications)</strong> au 
-        <strong>CCI Campus Strasbourg</strong> pour l'année universitaire 2026-2027. Ce rythme me permettra d'allier 
+        <strong> CESI Strasbourg</strong> pour l'année 2026-2027. Ce rythme me permettra d'allier 
         théorie académique et immersion concrète en entreprise.
       </p>
     )

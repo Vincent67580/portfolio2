@@ -3,7 +3,7 @@ export const timelineData = [
     id: 1,
     year: "2026 - 2027 (Objectif)",
     title: "Bachelor CDA (Concepteur Développeur d'Applications)",
-    location: "CCI Campus Strasbourg",
+    location: "CESI Strasbourg",
     description: "Recherche d'une alternance pour approfondir la conception d'architectures logicielles, le devOps et la gestion de projet agile.",
     icon: "mdi:school",
     status: "target"

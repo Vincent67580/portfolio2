@@ -2147,21 +2147,7 @@ main{
 
 
 
-/* --- FOOTER --- */
-.footer {
-  text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid #eee;
-  color: #666;
-  margin-top: 50px;
-}
 
-@media (max-width: 480px) {
-  .footer {
-    padding: 30px 15px;
-    font-size: 0.85rem;
-  }
-}
 
 
 
@@ -2578,8 +2564,55 @@ main{
 
 
 
+/* --- FOOTER --- */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+  color: #666;
+  margin-top: 50px;
+}
 
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+.footer-contacts {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-contacts a {
+  color: #666;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-contacts a:hover {
+  color: var(--primary-color, #f43f5e);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+    font-size: 0.85rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+ 
 
 
 
@@ -2589,3 +2622,5 @@ footer, .info-perso p, .detail-card, .cv-section{
   /* background: var(--bg-color); */
   background: rgb(var(--text-bg),0.60);
 }
+
+
