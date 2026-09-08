@@ -2,7 +2,7 @@
 
 Bienvenue sur le dépôt de mon portfolio en ligne. Ce site me permet de présenter mes compétences, mes projets phares développés au cours de mes études, mes expériences en entreprise ainsi que mon travail de veille technologique.
 
-Actuellement diplômé d'un BAC Pro SN et venant de terminer mon cursus de **BTS SIO (option SLAM)**, j'utilise cette vitrine pour ma recherche d'une **alternance en Bachelor CDA (Concepteur Développeur d’Applications)** au CCI Campus Strasbourg pour l'année universitaire 2026-2027.
+Actuellement diplômé d'un BAC Pro SN et venant de terminer mon cursus de **BTS SIO (option SLAM)**, j'utilise cette vitrine pour ma recherche d'une **alternance en Bachelor CDA (Concepteur Développeur d’Applications)** au CESI Strasbourg pour l'année universitaire 2026-2027.
 
 ---
 
