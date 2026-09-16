@@ -158,7 +158,7 @@ export const projects = [
 },
 {
   id: 7,
-  title: "Gourmand - Application Symfony de Recettes",
+  title: "Gourmand - Application Recettes cuisine",
   description: "Application web full-stack développée avec Symfony 7 pour la découverte, publication et gestion de recettes. Projet exécutable uniquement en environnement local avec espace d'administration sécurisé pour la création et modification des recettes.",
   image: "images/imageProjetGourmand.png",
   link: "https://github.com/Vincent67580/gourmand",
