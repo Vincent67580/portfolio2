@@ -18,7 +18,9 @@ function CanvasBackground() {
 
     // Configuration des particules
     const particlesArray = [];
-    const numberOfParticles = 60; // Nombre de points sur l'écran
+    const isMobile = window.innerWidth < 768;
+    // 30 points sur mobile, 60 sur bureau 
+    const numberOfParticles = isMobile ? 25 : 90;
 
     
     // Récupérer les couleurs dynamiques du thème CSS
