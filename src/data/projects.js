@@ -155,5 +155,33 @@ export const projects = [
     { label: "Prévisions horaires & 7 jours", icon: "mdi:calendar-clock", color: "#10B981" },
     { label: "Alertes météo & Thèmes jour/nuit", icon: "mdi:theme-light-dark", color: "#8B5CF6" }
   ]
+},
+{
+  id: 7,
+  title: "Gourmand - Application Symfony de Recettes",
+  description: "Application web full-stack développée avec Symfony 7 pour la découverte, publication et gestion de recettes. Projet exécutable uniquement en environnement local avec espace d'administration sécurisé pour la création et modification des recettes.",
+  image: "images/imageProjetGourmand.png",
+  link: "https://github.com/Vincent67580/gourmand",
+
+  tech: ["Symfony", "PHP", "MySQL", "Twig", "Bootstrap"],
+
+  // Stack technique et outils backend exacts du projet
+  details: [
+    { name: "Symfony 7", icon: "logos:symfony", color: "#000000" },
+    { name: "PHP 8.2", icon: "logos:php", color: "#777BB4" },
+    { name: "Doctrine ORM", icon: "logos:doctrine", color: "#FC6A31" },
+    { name: "MySQL / MariaDB", icon: "logos:mysql", color: "#4479A1" },
+    { name: "Twig", icon: "vscode-icons:file-type-twig", color: "#A8B200" },
+    { name: "Bootstrap", icon: "logos:bootstrap", color: "#7952B3" }
+  ],
+
+  // Fonctionnalités clés issues du projet
+  features: [
+    { label: "Projet local PHP / MySQL", icon: "mdi:laptop", color: "#64748B" },
+    { label: "Espace Admin & Sécurité", icon: "mdi:shield-lock", color: "#EF4444" },
+    { label: "Top 3 & Compteur de vues dynamique", icon: "mdi:trophy-outline", color: "#EAB308" },
+    { label: "Gestion CRUD des recettes", icon: "mdi:silverware-fork-knife", color: "#F97316" },
+    { label: "Persistance des données via Doctrine", icon: "mdi:database-cog", color: "#10B981" }
+  ]
 }
 ];

@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { projects } from '../data/projects';
 
 function ProjectDetail() {
   const { id } = useParams();
-  
-  // 2. Initialise le hook de navigation
   const navigate = useNavigate();
+
+  // État pour la modale d'image
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const project = projects.find((p) => p.id === parseInt(id));
 
@@ -35,26 +37,25 @@ function ProjectDetail() {
           
           <div className="project-links">
             {project.link && project.link !== "#" && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn-action primary">
-                {/* On vérifie si le fichier se termine strictement par .txt */}
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn-action primary">
                 {project.link.endsWith('.txt') ? (
-                    <>
+                  <>
                     <Icon icon="mdi:code-tags" width="18" /> Voir le script / code
-                    </>
+                  </>
                 ) : (
-                    <>
+                  <>
                     <Icon icon="mdi:open-in-new" width="18" /> Démo / En ligne
-                    </>
+                  </>
                 )}
-                </a>
+              </a>
             )}
 
             {project.downloadLink && (
-                <a href={project.downloadLink} download className="btn-action secondary">
+              <a href={project.downloadLink} download className="btn-action secondary">
                 <Icon icon="mdi:download" width="18" /> Télécharger le .ZIP (Sources)
-                </a>
+              </a>
             )}
-            </div>
+          </div>
         </header>
 
         {/* Grille de contenu */}
@@ -89,7 +90,14 @@ function ProjectDetail() {
           {/* Colonne Droite : Image & Technos complètes */}
           <div className="detail-right-col">
             <div className="project-sidebar">
-              <img src={project.image} alt={project.title} className="sidebar-img" />
+              
+              {/* Image cliquable avec overlay loupe */}
+              <div className="sidebar-img-wrapper" onClick={() => setIsModalOpen(true)}>
+                <img src={project.image} alt={project.title} className="sidebar-img" />
+                <div className="image-overlay">
+                  <Icon icon="mdi:magnify-plus-outline" width="30" />
+                </div>
+              </div>
 
               {project.details && (
                 <section className="sidebar-tech-section">
@@ -111,6 +119,22 @@ function ProjectDetail() {
 
         </div>
       </main>
+
+      {/* Modale d'agrandissement de l'image */}
+      {isModalOpen && (
+        <div className="image-modal-backdrop" onClick={() => setIsModalOpen(false)}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="btn-close-modal" 
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Fermer"
+            >
+              <Icon icon="mdi:close" width="24" />
+            </button>
+            <img src={project.image} alt={project.title} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

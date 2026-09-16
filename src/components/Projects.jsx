@@ -11,7 +11,7 @@ function Projects({ limit }) {
   if (!projects) return null;
 
   // 2. Définir les catégories disponibles 
-  const categories = ['Tous','HTML', 'React', 'Python', 'JavaScript', 'API'];
+  const categories = ['Tous','HTML', 'React', 'Python', 'JavaScript', 'API', 'PHP'];
 
   // 3. Logique de tri et de filtrage
   let displayedProjects = [...projects].sort((a, b) => b.id - a.id);
