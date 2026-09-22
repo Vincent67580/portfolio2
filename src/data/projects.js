@@ -183,5 +183,31 @@ export const projects = [
     { label: "Gestion CRUD des recettes", icon: "mdi:silverware-fork-knife", color: "#F97316" },
     { label: "Persistance des données via Doctrine", icon: "mdi:database-cog", color: "#10B981" }
   ]
+}, 
+{
+  id: 8,
+  title: "CarbuPrix - Comparateur de Carburants",
+  description: "Application web permettant de localiser les stations-services environnantes et de comparer les prix des carburants en temps réel à partir des données ouvertes du gouvernement.",
+  image: "images/imageProjetCarbuPrix.png",
+  link: "https://vincent67580.github.io/CarbuPrix/",
+
+  tech: ["React", "Vite", "JavaScript", "API", "CSS"],
+
+  // Stack technique et outils
+  details: [
+    { name: "React", icon: "logos:react" },
+    { name: "Vite", icon: "logos:vitejs" },
+    { name: "JavaScript", icon: "logos:javascript" },
+    { name: "Open Data API", icon: "carbon:data-share", color: "#3B82F6" },
+    { name: "CSS3", icon: "simple-icons:css3", color: "#1572B6" }
+  ],
+
+  // Fonctionnalités clés
+  features: [
+    { label: "Prix en temps réel & Géolocalisation", icon: "mdi:gas-station", color: "#EF4444" },
+    { label: "Filtres par type de carburant", icon: "mdi:filter-variant", color: "#3B82F6" },
+    { label: "Tri par proximité & Tarifs", icon: "mdi:sort-numeric-ascending", color: "#10B981" },
+    { label: "Itinéraire vers la station", icon: "mdi:navigation-variant", color: "#8B5CF6" }
+  ]
 }
 ];
