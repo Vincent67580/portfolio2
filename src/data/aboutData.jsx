@@ -31,8 +31,8 @@ export const aboutSections = [
     className: "detail-card",
     content: (
       <p>
-        En dehors du développement, je m’intéresse de près à la <strong>veille technologique</strong> et au domaine de la 
-        <strong>data science / intelligence artificielle</strong>. J’aime aussi le sport, les jeux vidéo et la musique, 
+        En dehors du développement, je m’intéresse de près à la <strong>veille technologique</strong> et au domaine de 
+        la <strong>data science / intelligence artificielle</strong>. J’aime aussi le sport, les jeux vidéo et la musique, 
         qui me permettent de garder un bon équilibre au quotidien.
       </p>
     )
