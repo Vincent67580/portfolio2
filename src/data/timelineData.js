@@ -1,12 +1,12 @@
 export const timelineData = [
   {
     id: 1,
-    year: "2026 - 2027 (Objectif)",
-    title: "Bachelor CDA (Concepteur Développeur d'Applications)",
-    location: "CESI Strasbourg",
-    description: "Recherche d'une alternance pour approfondir la conception d'architectures logicielles, le devOps et la gestion de projet agile.",
-    icon: "mdi:school",
-    status: "target"
+    year: "2026 (Maintenant)",
+    title: "Recherche d'emploi - Informatique & Développement",
+    location: "Strasbourg - Haguenau & Alentours",
+    description: "Recherche active d'une première opportunité professionnelle (Développement, Programmation, Support / Helpdesk) suite à l'obtention de mon BTS SIO.",
+    icon: "mdi:briefcase-search",
+    status: "current"
   },
   {
     id: 2,

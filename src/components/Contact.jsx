@@ -8,7 +8,7 @@ function Contact() {
       <div className="container">
         <h2 className="section-title">Me contacter</h2>
         <p className="contact-subtitle">
-          Une opportunité d'alternances ou une question ? N'hésitez pas à me joindre.
+          Une opportunité d'emploi ou une question ? N'hésitez pas à me joindre.
         </p>
         
         <div className="contact-grid">

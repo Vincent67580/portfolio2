@@ -27,8 +27,8 @@ function ContactPage() {
       return;
     }
 
-    // Rate Limiting (1 message toutes les x minutes)
-    const COOLDOWN_TIME = 5 * 60 * 1000; // minutes en millisecondes
+    // Rate Limiting (1 message toutes les 5 minutes)
+    const COOLDOWN_TIME = 5 * 60 * 1000;
     const lastSentTime = localStorage.getItem('last_email_sent_time');
     const now = Date.now();
 
@@ -53,7 +53,6 @@ function ContactPage() {
       .then(
         () => {
           setIsSending(false);
-          // Sauvegarde de l'heure d'envoi dans le navigateur
           localStorage.setItem('last_email_sent_time', Date.now().toString());
           setStatusMessage({
             type: 'success',
@@ -78,8 +77,8 @@ function ContactPage() {
         <header className="contact-header">
           <h2 className="section-title">On travaille ensemble ?</h2>
           <p className="contact-intro">
-            Je suis actuellement à la recherche d'une opportunité en alternance. 
-            Laissez-moi un message directement ici ou rejoignez-moi sur LinkedIn.
+            Je suis actuellement à la recherche d'un emploi en informatique (développement, programmation, helpdesk). 
+            N'hésitez pas à me laisser un message ci-dessous ou à me contacter sur LinkedIn.
           </p>
         </header>
 

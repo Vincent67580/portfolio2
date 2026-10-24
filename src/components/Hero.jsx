@@ -2,17 +2,17 @@
 function Hero() {
   return (
     <div className="hero-wrapper">
-      {/* Badge placé HORS du cadre rouge */}
+      {/* Badge de disponibilité */}
       <div className="availability-badge">
         <span className="pulse-dot"></span>
-        <span>Recheche d'une alternance Bachelor CDA (Sept. 2026)</span>
+        <span>Recherche d'emploi en informatique (Disponible immédiatement)</span>
       </div>
 
       <header className="hero-banner">
         <div className="hero-content">
           <h1>Bienvenue sur mon portfolio</h1> 
           <p className="hero-subtitle">
-            Découvrez mon univers, mes projets et mes compétences en développement.
+            Développeur & Technicien Support. À la recherche de nouvelles opportunités en programmation, développement ou helpdesk.
           </p>
         </div>
       </header>

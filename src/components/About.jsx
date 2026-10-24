@@ -10,7 +10,7 @@ function About() {
           Je m’appelle <strong>Vincent Bonnet</strong>. Je suis fraîchement <strong>diplômé du BTS SIO</strong> option <strong>SLAM</strong> à Strasbourg.
         </p>
         <p>
-          Déterminé à poursuivre mon parcours, je suis activement à la recherche d'une <strong>alternance</strong> afin d'intégrer le <strong>Bachelor CDA (Concepteur Développeur d’Applications)</strong> au <strong>CESI Strasbourg</strong> pour l'année 2026-2027.
+          Actuellement à la recherche d'un <strong>emploi en informatique</strong> (développement, programmation, helpdesk), je suis disponible immédiatement pour m'investir au sein d'une équipe dynamique.
         </p>
         <p>
           Issu d'un parcours technique (BAC Pro SN), je combine aujourd'hui logique et créativité pour concevoir des applications logicielles et numériques performantes.

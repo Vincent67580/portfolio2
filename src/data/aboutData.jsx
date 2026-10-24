@@ -14,14 +14,13 @@ export const aboutSections = [
   },
   {
     id: "objective",
-    title: "Mon objectif actuel",
+    title: "Mon objectif professionnel",
     className: "detail-card objective-card",
     content: (
       <p>
-        Déterminé à poursuivre et approfondir mes compétences, je recherche activement une <strong>alternance </strong> 
-        pour intégrer le <strong>Bachelor CDA (Concepteur Développeur d’Applications)</strong> au 
-        <strong> CESI Strasbourg</strong> pour l'année 2026-2027. Ce rythme me permettra d'allier 
-        théorie académique et immersion concrète en entreprise.
+        Actuellement à la recherche d'un <strong>emploi en informatique</strong> (développement, programmation, support / helpdesk), 
+        je suis disponible immédiatement pour m'investir au sein d'une équipe. Mon parcours technique, mes compétences variées et mes projets 
+        me permettent d'être rapidement opérationnel pour contribuer à vos projets.
       </p>
     )
   },
