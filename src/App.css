@@ -955,29 +955,41 @@ main{
    PARTIE 3 : HERO BANNER & ABOUT + RESPONSIVE
    ========================================================================== */
 
-/* --- EN-TETE (HERO BANNER) --- */
+/* --- EN-TETE (HERO BANNER) STYLE CARTE ÉPURÉE --- */
 .hero-banner {
-  height: 25vh;
+  min-height: 200px;
   display: flex;
   flex-direction: column; 
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: var(--primary-color); 
-  color: white;
+  
+  background-color: var(--bg-card);
+  
   border-radius: 20px;
-  margin: 20px 0;
+  margin: 30px 0;
+  padding: 1.5rem 2rem;
+  
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px -10px var(--box-shadow);
+  transition: var(--transition-bg);
 }
 
 .hero-banner h1 {
-  font-size: 3.5rem;
-  margin-bottom: 10px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--primary-color);
 }
+
 
 .hero-subtitle {
   padding-top: 20px;
-  font-size: 1.4rem;
-  opacity: 0.9;
+  font-size: 1.15rem;
+  color: var(--text-light);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 /* Badge de disponibilité */

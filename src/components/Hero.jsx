@@ -12,7 +12,7 @@ function Hero() {
         <div className="hero-content">
           <h1>Bienvenue sur mon portfolio</h1> 
           <p className="hero-subtitle">
-            Développeur & Technicien Support. À la recherche de nouvelles opportunités en programmation, développement ou helpdesk.
+            BTS SIO SLAM & BAC Pro SN | Passionné par le code, la logique logicielle et le support technique, prêt à relever de nouveaux défis.
           </p>
         </div>
       </header>

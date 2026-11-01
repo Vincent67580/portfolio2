@@ -39,6 +39,6 @@ export const aboutSections = [
 ];
 
 export const cvConfig = {
-  filePath: "documents/2026_CV_BONNET-Vincent.pdf",
+  filePath: "documents/CV_BONNET_Vincent_2026.pdf",
   description: "Vous pouvez consulter ou télécharger mon CV pour en savoir plus sur mon parcours et mes compétences."
 };
