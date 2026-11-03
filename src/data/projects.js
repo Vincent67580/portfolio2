@@ -42,7 +42,7 @@ export const projects = [
     { name: "smtplib", icon: "mdi:email-send", color: "#0078D4" },
     { name: "email", icon: "mdi:email", color: "#E53935" }
   ],
-  // Tes fonctionnalités avec leurs icônes respectives
+  // fonctionnalités avec leurs icônes respectives
   features: [
     { label: "Prise de rendez-vous", icon: "mdi:calendar-plus", color: "#4CAF50" },
     { label: "Suppression / modification", icon: "mdi:calendar-remove", color: "#FF7043" },
@@ -107,6 +107,32 @@ export const projects = [
 },
 {
   id: 5,
+  title: "Echéancier Fiscal - Excel & VBA",
+  description: `Projet Réaliser en Stage.
+
+  Outil automatisé de génération d'échéanciers fiscaux semestriels sous Excel grâce à une macro VBA. Intègre un calcul intelligent des dates d'échéances fiscales avec gestion dynamique des weekends et des jours fériés spécifiques au régime local Alsace-Moselle.`,
+  image: "images/ImageProjetEcheancier.png",
+  link: "#",  
+  documentPath: "documents/mode-operatoire-echeancier.pdf",
+  downloadLink: "projets/echeancier-fiscal.xlsm",
+  tech: ["Excel", "VBA", "Macros", "Automatisation"],
+  
+  details: [
+    { name: "Excel", icon: "vscode-icons:file-type-excel" },
+    { name: "VBA", icon: "vscode-icons:file-type-vba", color: "#107C41" },
+    { name: "Macros", icon: "mdi:play-box", color: "#EAB308" }
+  ],
+  
+  features: [
+    { label: "Génération dynamique par semestre", icon: "mdi:calendar-range", color: "#3B82F6" },
+    { label: "Gestion weekends & Jours fériés", icon: "mdi:calendar-check", color: "#10B981" },
+    { label: "Spécificité Alsace-Moselle", icon: "mdi:map-marker-radius", color: "#8B5CF6" },
+    { label: "Automatisation par bouton", icon: "mdi:gesture-tap-button", color: "#F43F5E" }
+  ]
+},
+
+{
+  id: 6,
   title: "Portfolio personnel",
   description: "Conception et développement d'une application web moderne avec React.js. Architecture basée sur des composants réutilisables, gestion du routage dynamique et déploiement automatisé via GitHub Actions.",
   image: "images/imagePortfolioReact.png", 
@@ -130,7 +156,7 @@ export const projects = [
   ]
 },
 {
-  id: 6,
+  id: 7,
   title: "Dashboard Météo React",
   description: "Tableau de bord météo moderne sous React.js proposant des prévisions en temps réel et sur 7 jours. Intègre géolocalisation, gestion des favoris via localStorage, thèmes dynamiques jour/nuit et alertes météo avec l'API Open-Meteo.",
   image: "images/imageProjetMeteo.png",
@@ -157,7 +183,7 @@ export const projects = [
   ]
 },
 {
-  id: 7,
+  id: 8,
   title: "Gourmand - Application Recettes cuisine",
   description: "Application web full-stack développée avec Symfony 7 pour la découverte, publication et gestion de recettes. Projet exécutable uniquement en environnement local avec espace d'administration sécurisé pour la création et modification des recettes.",
   image: "images/imageProjetGourmand.png",
@@ -185,7 +211,7 @@ export const projects = [
   ]
 }, 
 {
-  id: 8,
+  id: 9,
   title: "CarbuPrix - Comparateur de Carburants",
   description: "Application web permettant de localiser les stations-services environnantes et de comparer les prix des carburants en temps réel à partir des données ouvertes du gouvernement.",
   image: "images/imageProjetCarbuPrix.png",

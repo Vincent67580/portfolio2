@@ -11,7 +11,7 @@ function Projects({ limit }) {
   if (!projects) return null;
 
   // 2. Définir les catégories disponibles 
-  const categories = ['Tous','HTML', 'React', 'Python', 'JavaScript', 'API', 'PHP'];
+  const categories = ['Tous', 'HTML', 'React', 'Python', 'JavaScript', 'API', 'PHP'];
 
   // 3. Logique de tri et de filtrage
   let displayedProjects = [...projects].sort((a, b) => b.id - a.id);
@@ -52,6 +52,18 @@ function Projects({ limit }) {
           ))}
         </div>
       )}
+
+      {/* Compteur de projets dynamique */}
+      <div className="projects-counter">
+        <span>
+          {limit 
+            ? `Affichage de ${displayedProjects.length} projets sur ${projects.length}`
+            : activeFilter === 'Tous' 
+              ? `${projects.length} projet${projects.length > 1 ? 's' : ''} au total` 
+              : `${displayedProjects.length} projet${displayedProjects.length > 1 ? 's' : ''} trouvé${displayedProjects.length > 1 ? 's' : ''} pour "${activeFilter}"`
+          }
+        </span>
+      </div>
       
       <div className="projects-grid">
         {displayedProjects.length > 0 ? (
@@ -59,14 +71,14 @@ function Projects({ limit }) {
             <ProjectCard key={project.id} {...project} />
           ))
         ) : (
-          <p style={{ textAlign: 'center', gridColumn: '1/-1', padding: '2rem' }}>
+          <p className="projects-empty-msg">
             Aucun projet ne correspond à ce filtre.
           </p>
         )}
       </div>
 
       {limit && (
-        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+        <div className="projects-footer-home">
           <Link to="/projets" className="btn-view-all">
             Voir tous les projets
           </Link>

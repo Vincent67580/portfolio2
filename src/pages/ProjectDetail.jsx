@@ -50,9 +50,16 @@ function ProjectDetail() {
               </a>
             )}
 
+            {/* Bouton pour consulter le Mode Opératoire / PDF */}
+            {project.documentPath && (
+              <a href={project.documentPath} target="_blank" rel="noopener noreferrer" className="btn-action secondary">
+                <Icon icon="mdi:file-pdf-box" width="18" style={{ color: '#E11D48' }} /> Mode opératoire (PDF)
+              </a>
+            )}
+
             {project.downloadLink && (
               <a href={project.downloadLink} download className="btn-action secondary">
-                <Icon icon="mdi:download" width="18" /> Télécharger le .ZIP (Sources)
+                <Icon icon="mdi:download" width="18" /> Télécharger le fichier
               </a>
             )}
           </div>

@@ -547,6 +547,7 @@ main{
   line-height: 1.6;
   color: var(--text-color);
   margin-bottom: 20px;
+  white-space: pre-line;
 }
 
 /* TITRES INTERNES (Technologies / Points clés) */
@@ -681,6 +682,29 @@ main{
   transform: translateY(-2px);
 }
 
+/* Nombre de projet */
+.projects-counter {
+  text-align: center;
+  margin: 15px 0 25px 0;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* message d'erreur */
+.projects-empty-msg {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+/* Bouton voir tout les projet */
+.projects-footer-home {
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* Animation de la grille quand on change de filtre */
 .projects-grid {
   /* On ajoute une petite animation d'entrée */
@@ -769,6 +793,7 @@ main{
 .detail-section p {
   line-height: 1.7;
   opacity: 0.9;
+  white-space: pre-line;
 }
 
 /* Liste des fonctionnalités */
